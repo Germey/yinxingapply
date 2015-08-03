@@ -1,0 +1,109 @@
+<?php
+class DashboardBaseAction extends Action{
+    function __construct(){
+        global $login_user;
+        global $partner;
+
+        // login as customer
+        if($this->_get('token')) {
+            $cmd_user_id_viapm = intval(Crypt::de($this->_get('token')));
+            $login_user = D('CmsUsers')->getById($cmd_user_id_viapm);
+            Session::Set("login_user", $login_user);
+            Session::Set("via_pm",1);
+        } else {
+            $login_user = Session::Get("login_user");
+        }
+
+        if(!empty($login_user)){
+            $this->assign("login_user", $login_user);
+            $user_info = D(PM_NAME . "://UserInfo")->getUserInfo($login_user['id']);
+            if($user_info && !$user_info['birthday']) {
+                $user_info['birthday'] = '1990-01-01';
+                if(!$user_info['submit_time']) {
+                    $user_info['submit_time'] = date('Y-m-d');
+                }
+            }
+            $this->user_info = $this->userinfo = $user_info;
+
+            define(USER_ID, $login_user['id']);
+        } else {
+            redirect("/");
+        }
+
+        $options = M("Options")->where("autoload = 'Y'")->select();
+        $INI = array();
+        foreach ($options as $index => $option) {
+            $INI[$option['option_name']] = $option['option_value'];
+        }
+        $this->assign("INI", $INI);
+
+        //  安全过滤
+        foreach($_POST as $k => $v) {
+            if(!is_array($v)) {
+                $v = preg_replace('/script.*?\/script/is', '', $v);
+                $v = preg_replace('/alert\(.*?\)/is', '', $v);
+                $v = str_replace(array('eval','function','onerror','alert'), '', $v);
+                // $_POST[$k] = htmlspecialchars($v);
+            }
+        }
+
+        // $this->user_info_items = $this->get_user_info();
+    }
+
+    public function get_partner_items() {
+
+        return array(
+            "split_1" => array("display" => "1. 机构注册信息", "type" => 'split'),
+            //"org_code" => array("display" => "组织机构代码", "param" => array("placeholder" => "")),
+            "title" => array("display" => "机构名称", "li_class" => "fw", "class" => "span8"),
+            "legal_type" => array("display" => "机构性质", "param" => array("placeholder" => "注册状况及注册形式")),
+            "gov_name" => array("display" => "主管单位",),
+            "found_time" => array("display" => "成立时间"),
+            "website" => array("display" => "机构网站", "param" => array("placeholder" => "http://")),
+            "legal_username" => array("display" => "机构法人"),
+            "address" => array("display" => "办公地址", "li_class" => "fw", "class" => "span8"),
+            "zipcode" => array("display" => "邮编"),
+            "leader_name" => array("display" => "机构负责人"),
+            "leader_mobile" => array("display" => "负责人手机"),
+            "phone" => array("display" => "固定电话", "param" => array("placeholder" => "请填写区号，格式010-88889999")),
+            "email" => array("display" => "机构邮箱"),
+            // "certificate_scan" => array("display" => "机构有效证件", "type" => "file", "param" => array("placeholder" => "企业营业执照、民办非企业证书等（<span class='text-error'><b>图片上限5M</b></span>，图片格式限制为png，jpg，gif等）", 'file_type'=>'image')),
+
+            "split_2" => array("display" => "2. 机构服务信息", "type" => 'split'),
+
+            "description" => array("display" => "机构简介", "type" => "textarea", "class" => "limited", "param" => array("placeholder" => "机构性质、宗旨、活动范围，工作领域和服务对象等介绍（200字以内）", 'limit'=>200)),
+            "partner_relation" => array("display" => "组织以往的合作伙伴关系状况", "type" => "textarea", "class" => "limited", "param" => array("placeholder" => "请举在3年内与贵组织有过合作的机构1-2家。 简单描述：合作机构名称，合作时间，合作项目名称，是否得到该机构给予的奖励或是评价（200字内）", 'limit'=>200)),
+            "area_service_history" => array("display" => "是否有定点服务社区，及所在社区内服务周期，资历和成果", "type" => "textarea", "class" => "limited", "param" => array("placeholder" => "", 'limit'=>200)),
+            // "partner_owner_relation" => array("display" => "最近一次与合作的项目执行情况描述", "type" => "textarea", "class" => "limited", "param" => array("placeholder" => "仅限于以往与万通有过合作的机构（300字内）", 'limit'=>200)),
+
+
+            "split_3" => array("display" => "3. 机构人员情况", "type" => 'split'),
+            "fulltime_number" => array("display" => "全职人员数量", "type" => "number"),
+            "parttime_number" => array("display" => "兼职人员数量", "type" => "number"),
+            "volunteer_number" => array("display" => "志愿者数量", "type" => "number"),
+            "employee" => array("display" => "机构人员", "type" => "group" , "param" =>array("placeholder" => "", 
+                    'options' => array('name'=>array('name'=>'姓名', 'class'=>'span1', ),
+                                         'title' => array('name'=>'职务','class'=>'span2'),
+                                         'enrolltime' => array('name'=>'入职时间','class'=>'span2'),
+                                         'type' => array('name'=>'全/兼职','class'=>'span1', 'type'=>'select', 'type'=>'select', 'options'=>array('','全','兼')),
+                                         'description' => array('name'=>'工作经历', 'class'=>'span3 group_span3', 'type'=>'textarea' )))),        
+
+            "split_4" => array("display" => "4. 机构财务情况", "type" => 'split'),
+
+            "fund_in_out" => array("display" => "进三年来的收入与支出", "type" => "textarea", "class"=>"textarea"),
+            "asset_detail" => array("display" => "机构办公场地归属，是否有办公场地支持", "type" => "textarea"),
+            "funded_detail" => array("display" => "近三年来都接受了哪些机构的资助", "type" => "textarea"),
+            "gov_purchase" => array("display" => "是否有政府采购？政府采购金额", "type" => "textarea"),
+        );
+        
+    }
+
+    function getCurrentWebRoot(){
+        return "http://" . $_SERVER['HTTP_HOST'];
+    }
+
+    function _empty(){
+        header('HTTP/1.1 404 Not Found');
+        $this->display('Common:Common:page_not_found');
+    }
+}

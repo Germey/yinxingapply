@@ -1,0 +1,34 @@
+<layout name="Public/frontend_template"/>   
+
+<div class="register" style="width:780px;margin-left:120px">
+    <div class="reg_image reg_image_1">
+        <img src="/styles/css/images/register_flow_1.png" alt="" />
+    </div>
+    <div class="register_block">
+        <h4 class="justcenter">欢迎加入{$INI['site_name']}</h4>
+        <form class="form-horizontal validator" action="/register/submit_reg" method="post">
+            <input type="hidden" name="partner_id" id="partner_id" value=""/>
+            <div class="control-group">
+                <label class="control-label require" for="email">登录邮箱</label>
+                <div class="controls">
+                    <input type="text" require="true" datatype="email|ajax" url="/validation/user_email" msg="邮箱格式不正确|邮箱已经被使用" placeholder="joey@example.com" vname="signupemail" name="email" id="email" class="input-medium span3">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label require" for="password">登录密码</label>
+                <div class="controls"><input type="password" require="true" datatype="require" msg="密码不能为空" name="password" id="signup-password" class="input-medium span3 "></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label require" for="password2">确认密码</label>
+                <div class="controls"><input type="password" require="true" msg="密码不一致" name="password2" id="password2" class="input-medium span3" datatype="compare" compare="signup-password"></div>
+            </div>
+            <div class="control-group">
+                <div class="controls"><input type="submit" class="btn btn-success" id="submit" value="提交" style="width:218px;" /></div>
+            </div>
+        </form>
+
+        <hr />
+        <p class="justcenter"><a href="/register/login">›› 我已经有账号，直接登录</a></p>
+
+    </div>
+</div>

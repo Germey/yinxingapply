@@ -1,0 +1,20 @@
+<layout name="Public/frontend_template"/>
+    <div class="container" style="width:780px">
+
+        <div class="reg_image">
+            <img src="/styles/css/images/register_flow_2.png" alt="" />
+        </div>
+        <div class="register_block" style="padding:20px">
+            <img src="/styles/css/images/big_correct.png" alt="" style="height: 30px; float: left; margin: 4px 5px"/> <h4>恭喜您注册成功</h4>
+            <hr />
+            我们发了一封邮件到{$email}，请查收您的邮件并点击邮件中的链接进行验证
+            <div class="no_email_tips">
+              <h5>没有收到邮件？</h5>
+              <ul>
+                <li>请稍等几分钟，邮件服务器可能会有延迟</li>
+                <li>可能被误判为垃圾邮件了，请到垃圾邮件箱找找看</li>
+                <li>如果没有找到，请点击这里重新发送到{$email} : <a href="/register/resend_email?id={$id}">点击这里重新发送</a></li>
+              </ul>
+            </div>
+        </div>
+</div>

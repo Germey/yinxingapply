@@ -1,0 +1,261 @@
+﻿body{font-size:13px;font-family: "Microsoft Yahei"; margin: 0 auto; }
+.fixed-navbar-makeup {padding-top:10px}
+
+a{color: #333; text-decoration: none}
+a:hover{color: #ff9700; text-decoration: none;}
+.clear{clear:both}
+ul{ margin:0; }
+li{ list-style-type:none; }
+
+input.errorInput {border-color: none;outline: 0;outline: thin dotted 9;-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #f89406;-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #f89406;box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #f89406;}
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+  box-shadow: none;
+}
+span.errorTip{padding-left:5px; color: red}
+table td {vertical-align: top}
+table.table-noborder {margin-bottom: 10px;}
+table.table-noborder  td {border:none;}
+table.table-noborder  th {border:none;}
+.alert {border-radius: 0; text-shadow:none;}
+small{ font-size: 100% }
+.simpleeditor {margin-left: 0;}
+
+.btn {border-radius: 2px;}
+
+[class^="icon-"], [class*=" icon-"] {
+  margin-top: 3px;
+}
+
+input.span1, textarea.span1, .uneditable-input.span1 {width: 72px;}
+input.span6, textarea.span6, .uneditable-input.span6 {width: 425px;}
+select, input[type="file"] {  height: 28px;line-height: 28px; }
+
+.justcenter {text-align: center;}
+.justright {text-align: right;}
+
+.white-shadow {background: white; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2); background:whiteSmoke;}
+
+.front {position: relative; margin: 0px auto; }
+.top {height: 73px; padding-top: 10px; box-shadow: 0px 1px 3px #ff9700;}
+
+.front .top .btn {background:none; text-shadow: none; box-shadow: none;}
+.front .top .btn-small {padding:0 10px; color:#3e3e3e; font-size:13px;}
+
+.front .navbar-static-top { margin-left: 280px; margin-top: 62px;}
+.front .navbar-inner { background: none; background-image: none; border: none;padding: 0; box-shadow: none; filter:none; }
+.front .navbar-inner .container {width: 705px; margin: 0; }
+.front .navbar .nav {margin: 0; float: right;}
+.front .navbar .nav > li > a {
+  font-size: 16px;
+  text-shadow: 0 0px 0 rgba(0, 0, 0, 0);
+  padding: 7.5px 20px 7.5px;
+  /*cursor: default;*/
+  background:none;
+  color:#072;
+}
+/*.front .navbar .nav > li > a:hover { background: #072; color:white;}*/
+/*.front .navbar .nav > li > a.active { background: #072;}*/
+
+.front .dropdown-menu {min-width: 100px;}
+.front .navbar .nav > li > .dropdown-menu:before {left:19px;}
+.front .navbar .nav > li > .dropdown-menu:after {left:20px}
+
+.front .dropdown-menu li > a { padding:10px; text-align: center; color: #072; font-size: 14px}
+.front .dropdown-menu li > a:hover, .front .dropdown-menu li > a:focus, .front .dropdown-submenu:hover > a { 
+  background-image:none; 
+  background: none; 
+  color: #F36F21;
+  filter:none; 
+}
+
+.front .dropdown-submenu > a:after {border-left-color:#333; margin-right:5px;}
+.front .dropdown-submenu:hover > a:after {border-left-color: #F36F21;}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu{ display: block; margin-top:0}
+.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  background: none;
+  color: #F36F21;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.home-block-bg {width:1048px; text-align: center; position: relative; margin-top: -44px;}
+
+.hx {font-size: 16px;  font-weight: lighter; line-height: 30px; font-family: simhei; width: 150px; border-bottom: 2px solid #F36F21; color: #F36F21; margin: 20px 0 10px 0;}
+
+#footer {margin-top: 20px; background: #FFFAF3; color: #333; padding: 10px 0; border-top: 1px solid #ff9700;}
+#footer a {color: #333}
+#footer a:hover {color: #333; text-decoration: underline;}
+
+.dialog{
+  min-height: 200px;
+  min-width: 300px;
+  /*padding: 39px 19px 14px;*/
+  background-color: white;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.image_dialog_close{
+  position: absolute;
+  right: 0;
+  font-size:22px;
+  cursor:pointer;
+  
+}
+.image_dialog_close:hover{
+  text-decoration: none;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+
+.label-info[href], .badge-info[href] { background-color: #072; }
+.label-important[href], .badge-important[href] {background-color: #fe9200;}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+  border-radius: 0;
+}
+
+.btn {
+  text-shadow:none;
+  background-image: none;
+  border:1px solid #DDD;
+  border-color:#DDD;
+}
+
+.btn-success {
+  background: #ff9700;
+  background-color: none;
+  border-color: #ff9700; 
+  text-shadow: none;
+  border: none;
+}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  color: #ffffff;
+  background-color: #EB8E07;
+  *background-color: #EB8E07;
+}
+
+.register_block{background: #FCFCFC; padding: 40px; border: 1px solid #EEE;}
+.register_block .control-group{margin-left: 180px;}
+.register_block input[type=submit] {width: 100%}
+
+.register_block h4{text-align: center;margin-bottom: 30px; font-weight: normal; font-size: 23px;}
+.reg_image{margin: 20px 0;}
+.register_left{float: left; width: 440px; }
+.form-horizontal .control-label {width: 100px;}
+.form-horizontal .controls {margin-left: 120px}
+.register_right{float: right; width: 300px; }
+
+.register_block .no_email_tips{margin-top: 25px;background: #f7f7f7;padding: 20px 30px 20px 25px;font-size: 12px;}
+/*hr {border-top: 1px solid #F36F21;border-bottom: 1px solid #F36F21;}*/*/
+
+#dashboard #logo{top: 25px}
+#dashboard .muted{font-size: 12px}
+#dashboard .nav-pills > li {text-align: center}
+#dashboard .nav-pills > li > a {-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;}
+#dashboard .sidebar_nav{width: 150px; float: left; background:#FFF;}
+#dashboard .sidebar_nav .nav{margin-bottom: 0;}
+#dashboard .sidebar_nav .nav li a{font-size: 14px; padding-top: 15px; padding-bottom: 15px;font-weight: bold;}
+#dashboard h4{padding-left: 10px; font-size: 16px;}
+#dashboard form h4{font-size:16px; margin-top:15px; background:whitesmoke; padding:5px;}
+#dashboard form h4.sub{font-size:14px; margin-left: 25px; margin-bottom: 0;border-left: 2px solid #DDD; padding-left: 10px;}
+
+#dashboard h4.justcenter{font-size: 26px; font-weight: normal;}
+
+#dashboard .sidebar_nav .temp_save {padding:5px 0; margin: 10px 0; text-align: center;}
+#dashboard .sidebar_nav .temp_save_nocursor {cursor: default}
+#dashboard .sidebar_nav .temp_save:hover{opacity: 0.8; filter: alpha(opacity=80);}
+#dashboard .sidebar_nav .temp_save{color: white}
+#dashboard .sidebar_nav .temp_save #complete_percentage{font-size: 16px; font-weight: bold}
+#dashboard .temp_save a{color: white;font-size:14px}
+#dashboard .temp_save i{margin-top:3px}
+#dashboard .draft-save-tip { position:fixed; top:1px; margin-left:30px; display:none; text-align: center; padding-top:10px; padding-left: 50px; padding-right: 50px}
+
+#dashboard .dashboard_main_content{width: 820px; min-height: 200px; float: right; background: white; padding: 5px;}
+#dashboard .dashboard_main_content a.hi{font-weight: bold;}
+
+#dashboard .dashboard_main_content #diff_total{color: red}
+#dashboard .dashboard_main_content select.special{background: #f89406; color: white}
+#dashboard .dashboard_main_content .info li {padding: 10px 0 10px 10px; line-height: 20px; min-height: 50px; }
+#dashboard .dashboard_main_content .info li input{}
+#dashboard .dashboard_main_content .info li  textarea{height: 80px; margin-bottom: 0}
+#dashboard .dashboard_main_content .info li  textarea.group_span3{width: 180px; height: 60px}
+#dashboard .dashboard_main_content .info li  textarea.group_span4{width: 280px; height: 60px}
+#dashboard .dashboard_main_content .info li  textarea.group_span5{width: 400px; height: 60px}
+#dashboard .dashboard_main_content .info li  textarea.group_span6{width: 480px; height: 60px}
+/*#dashboard .dashboard_main_content .info li:hover {background: #f5f5f5}*/
+
+#dashboard .dashboard_main_content .info input.span4{width: 255px;}
+#dashboard .dashboard_main_content .info select.span4{width: 268px;}
+#dashboard .dashboard_main_content .info input.span8{width: 655px;}
+#dashboard .dashboard_main_content .info textarea.span8{width: 658px;}
+#dashboard .dashboard_main_content .info select.span8{width: 666px;}
+
+#dashboard .dashboard_main_content .info .title{float: left; text-align: right; width: 140px; margin-right: 10px; cursor: default; margin-top: 3px; font-size: 13px; color:#2f6f9f; }
+#dashboard .dashboard_main_content .info .detail{/*width: 660px; */margin-left: 150px; float: none;}
+#dashboard .dashboard_main_content .info .detail .item{width: 100%; float: left; padding-bottom: 10px}
+#dashboard .dashboard_main_content .info .detail .item textarea{width: 525px;}
+#dashboard .dashboard_main_content .info .detail .title{width: 80px; float: left; padding-left: 10px; text-align: left}
+#dashboard .dashboard_main_content .info .detail input{float: left; box-shadow: none;}
+#dashboard .dashboard_main_content .info .detail label.checkbox{float: left; width:310px;}
+
+#dashboard .dashboard_main_content .partner-detail .info li {border-bottom: 1px dashed #EEE; min-height: 38px; padding-top:18px;}
+#dashboard .dashboard_main_content .partner-detail .info .detail {line-height: 26px; }
+
+#dashboard .dashboard_main_content .project li {float: left; width: 400px; padding: 5px 0 5px 0;}
+/*#dashboard .dashboard_main_content .project li table{width: 650px}*/
+#dashboard .dashboard_main_content .project .span5 {margin:0}
+#dashboard .dashboard_main_content .project li input{margin-bottom: 0}
+#dashboard .dashboard_main_content .project li select{margin-bottom: 0}
+#dashboard .dashboard_main_content .project li.fw {float: left; width: 100%;}
+#dashboard .dashboard_main_content .project li.split{background: whitesmoke; padding: 10px 0 0 15px; height: 30px; min-height: 30px; font-weight: bold; font-size: 15px; margin-bottom: 10px;}
+
+#dashboard .dashboard_main_content .project li.with_prefix label.title{display: none;}
+#dashboard .dashboard_main_content .project li.with_prefix div.detail{margin-left: 25px;}
+#dashboard .dashboard_main_content .project li.with_prefix div.detail textarea.span8{width:780px;margin-bottom: 10px;}
+
+#dashboard .dashboard_main_content .project li .edui-editor{width: 620px}
+#dashboard .dashboard_main_content .title_level_3{padding: 5px 0 5px 30px; font-weight: bold; font-size: 15px; margin-top: 10px; margin-bottom: 10px; background: whitesmoke; border-bottom: 1px solid #dedede;}
+
+#dashboard .dashboard_preview{width: 1000px; margin: auto ;float: none; position: relative; background: white; padding: 0 5px;}
+#dashboard .dashboard_preview .info .detail{line-height: 25px;}
+#dashboard .dashboard_preview .info .detail p {margin-bottom: 3px}
+#dashboard .dashboard_preview .project li {width: 500px; min-height: 36px; border-bottom: 1px dashed #efefef; padding: 10px 0 0px 0;}
+/*#dashboard .dashboard_preview .project li table{width: 850px}*/
+#dashboard .dashboard_preview .project li.fw {margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #efefef; }
+#dashboard .dashboard_preview .project li.full {border: none; }
+#dashboard .dashboard_preview .project li.full label.title{display: none; }
+#dashboard .dashboard_preview .project li.full div.detail{margin-left: 50px; }
+#dashboard .dashboard_preview #print_and_submit {position: fixed; width: 1000px; margin: auto; top: 10px; margin-left: 660px}
+#dashboard .dashboard_preview #print_and_submit label{padding: 7px 20px; font-size: 16px}
+
+#dashboard .affix{top:10px;}
+#dashboard .dashboard_main_content .agreement_frame{width: 100%; overflow-y: scroll; height: 450px; border: 1px solid #EEE; margin-bottom: 20px;}
+
+#dashboard .dashboard_main_content table.project-plan .l{width:80px; font-weight: bold}
+
+.table-bordered th {background: whitesmoke;}
+.control-group table td {padding: 4px;}
+
+#tb-finance { margin-bottom: 5px; }
+#tb-finance td { padding: 2px }
+#tb-finance td select{ margin-bottom: 3px; }
+#tb-finance td .span1{ width: 72px; }
+
+.change_something textarea {height: 80px;}
+.change_something .span1 {width: 80px;}
+
+.uploadifyQueue .completed {  width: 500px; float: left; padding: 7px;}
+.uploadifyQueue select {    float: left; margin-top: 8px; width: 420px;}

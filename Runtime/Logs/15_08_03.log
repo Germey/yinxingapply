@@ -1,0 +1,715 @@
+[ 2015-08-03T13:33:43+08:00 ] ERR: (ThinkException) Access denied for user 'root'@'localhost' (using password: YES)
+[ 2015-08-03T13:35:05+08:00 ] ERR: (ThinkException) Unknown database 'yinxing'
+[ 2015-08-03T13:38:30+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001416s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002913s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.004164s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000444s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000531s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.142822s ]
+INFO: [ view_template ] --END-- [ RunTime:0.143089s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.001194s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.664211s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.664605s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.015410s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.016764s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.009145s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.010580s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.003276s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.056323s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.069140s ]
+INFO: [ view_end ] --END-- [ RunTime:0.069461s ]
+
+[ 2015-08-03T13:38:34+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001314s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001239s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002895s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.005407s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000376s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000398s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001897s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002119s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000423s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.022261s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022427s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001002s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000814s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000563s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000840s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.000962s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004713s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000858s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001002s ]
+
+[ 2015-08-03T13:38:35+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001624s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002264s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004427s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.004504s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000301s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000280s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001212s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001379s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000404s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.017275s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017535s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000829s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000695s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000561s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000846s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.000867s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004250s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001001s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001140s ]
+
+[ 2015-08-03T13:38:35+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002128s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002234s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004763s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.004542s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000520s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000675s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.003888s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004266s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000425s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.019337s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019552s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001377s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002420s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002189s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002984s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.001883s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011789s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001613s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001762s ]
+
+[ 2015-08-03T13:38:36+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001253s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001196s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002700s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.004358s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000733s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000473s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002023s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002196s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000477s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.018388s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018529s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001297s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001349s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001010s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001360s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.002053s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007568s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001896s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002048s ]
+
+[ 2015-08-03T13:38:37+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000987s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000777s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002052s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.003879s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000311s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000327s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000987s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001134s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.001128s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.016183s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016344s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001267s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001046s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000793s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000972s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.001009s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005622s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000939s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001087s ]
+
+[ 2015-08-03T13:38:37+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000987s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001265s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002705s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.007035s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000962s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000740s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001169s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001400s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000421s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.024133s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024272s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000669s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000576s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000404s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000687s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.000948s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003774s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001010s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001156s ]
+
+[ 2015-08-03T13:38:40+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001481s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001265s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003110s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.005648s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000320s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000275s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001702s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001944s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000459s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.018123s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018330s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001148s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000931s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000620s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000886s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.000967s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005068s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000951s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001087s ]
+
+[ 2015-08-03T13:38:40+08:00 ] 0.0.0.0 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002028s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002166s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004697s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.016822s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000364s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000392s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001220s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001370s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.001189s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.019363s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019504s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000846s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001003s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001181s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001381s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.001039s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006059s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001447s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001658s ]
+
+[ 2015-08-03T13:48:01+08:00 ] 127.0.0.1 /yinxing_apply/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001494s ]
+INFO: Run CheckLang Behavior [ RunTime:0.003083s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005125s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.008552s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.001313s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000844s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.003016s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003389s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000602s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.032928s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033141s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002415s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001386s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000586s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002676s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.002374s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010648s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001883s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002271s ]
+
+[ 2015-08-03T13:53:48+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001099s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000899s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002346s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.007661s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000671s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000658s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001485s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001777s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.001220s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.020815s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021083s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000836s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000824s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000642s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000923s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.001181s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004925s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001042s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001193s ]
+
+[ 2015-08-03T13:54:52+08:00 ] 127.0.0.1 /register
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000926s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001079s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000736s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000706s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001665s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.003915s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000336s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000326s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.047631s ]
+INFO: [ view_template ] --END-- [ RunTime:0.047800s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\b9aced38044c2cc5cd7679fae23e9604.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\b9aced38044c2cc5cd7679fae23e9604.php 第 10 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.034705s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034850s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000705s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000875s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000570s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000827s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.001353s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004798s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000848s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000976s ]
+
+[ 2015-08-03T13:54:58+08:00 ] 127.0.0.1 /validation/user_email?n=signupemail&v=1016903103@qq.com
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001227s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001410s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000856s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000825s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001917s ]
+SQL: SHOW COLUMNS FROM `cms_users` [ RunTime:0.004233s ]
+SQL: SELECT * FROM `cms_users` WHERE ( `email` = '1016903103@qq.com' ) LIMIT 1   [ RunTime:0.000383s ]
+
+[ 2015-08-03T13:55:06+08:00 ] 127.0.0.1 /register/submit_reg
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002920s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003342s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001815s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001993s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004529s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.015363s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000745s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000788s ]
+SQL: SHOW COLUMNS FROM `cms_users` [ RunTime:0.004480s ]
+NOTIC: [8] Undefined index: HTTP_CLIENT_IP D:\wamp\www\yinxing_apply\Lib\Autoload\Utility.class.php 第 187 行.
+NOTIC: [8] Undefined index: HTTP_X_FORWARDED_FOR D:\wamp\www\yinxing_apply\Lib\Autoload\Utility.class.php 第 187 行.
+SQL: INSERT INTO `cms_users` (`partner_id`,`email`,`password`,`create_time`,`username`,`secret`,`ip`) VALUES (0,'1016903103@qq.com','624063a9aa8e8ada75746a6f07457034',2015,'1016903103@qq.com','67942558f7df32c92c8bba6ab7241db5','127.0.0.1') [ RunTime:0.000723s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'verify_email_subject' LIMIT 1   [ RunTime:0.000479s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'verify_email_content' LIMIT 1   [ RunTime:0.000474s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'webroot_apply' LIMIT 1   [ RunTime:0.000456s ]
+NOTIC: [2048] Non-static method Crypt::en() should not be called statically, assuming $this from incompatible context D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php 第 98 行.
+NOTIC: [2] Missing argument 2 for Crypt::en(), called in D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php on line 98 and defined D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 88 行.
+NOTIC: [8] Undefined variable: password D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 94 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'mail_smtp_host' LIMIT 1   [ RunTime:0.000454s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'mail_smtp_port' LIMIT 1   [ RunTime:0.000284s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'mail_smtp_ssl' LIMIT 1   [ RunTime:0.000283s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'mail_smtp_user' LIMIT 1   [ RunTime:0.000264s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'mail_smtp_pass' LIMIT 1   [ RunTime:0.000265s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'mail_smtp_from' LIMIT 1   [ RunTime:0.000319s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'mail_smtp_reply' LIMIT 1   [ RunTime:0.000400s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'smtp_sitename' LIMIT 1   [ RunTime:0.000395s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'mail_smtp_signature' LIMIT 1   [ RunTime:0.000782s ]
+NOTIC: [8] Undefined index: attachments D:\wamp\www\yinxing_apply\Lib\Autoload\Mailer.class.php 第 151 行.
+NOTIC: [2048] Non-static method Crypt::en() should not be called statically, assuming $this from incompatible context D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php 第 59 行.
+NOTIC: [2] Missing argument 2 for Crypt::en(), called in D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php on line 59 and defined D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 88 行.
+NOTIC: [8] Undefined variable: password D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 94 行.
+
+[ 2015-08-03T13:55:07+08:00 ] 127.0.0.1 /register/preview_verify_email?token=JAb9f1pZe=fre70pCocRcn3B2_zVi6iXJ
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001306s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001536s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000648s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000584s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001448s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.056753s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000476s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000464s ]
+NOTIC: [2048] Non-static method Crypt::de() should not be called statically, assuming $this from incompatible context D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php 第 63 行.
+NOTIC: [2] Missing argument 2 for Crypt::de(), called in D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php on line 63 and defined D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 108 行.
+NOTIC: [8] Undefined variable: password D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 117 行.
+NOTIC: [2048] Non-static method Crypt::en() should not be called statically, assuming $this from incompatible context D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php 第 64 行.
+NOTIC: [2] Missing argument 2 for Crypt::en(), called in D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php on line 64 and defined D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 88 行.
+NOTIC: [8] Undefined variable: password D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 94 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.014366s ]
+INFO: [ view_template ] --END-- [ RunTime:0.014619s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\185b7a6d3074c0c4f9434b62a40d9a73.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\185b7a6d3074c0c4f9434b62a40d9a73.php 第 10 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.093796s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.094099s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001352s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001408s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001065s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001845s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.002425s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008975s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001685s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001954s ]
+
+[ 2015-08-03T13:55:33+08:00 ] 127.0.0.1 /register/verify_email?id=OLT3wl24s&secret=67942558f7df32c92c8bba6ab7241db5
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001286s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001447s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000770s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000847s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001829s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.003834s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000428s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000419s ]
+NOTIC: [2048] Non-static method Crypt::de() should not be called statically, assuming $this from incompatible context D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php 第 106 行.
+NOTIC: [2] Missing argument 2 for Crypt::de(), called in D:\wamp\www\yinxing_apply\Lib\Action\Frontend\RegisterAction.class.php on line 106 and defined D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 108 行.
+NOTIC: [8] Undefined variable: password D:\wamp\www\thinkphp\Extend\Library\ORG\Crypt\Crypt.class.php 第 117 行.
+SQL: SHOW COLUMNS FROM `cms_users` [ RunTime:0.004017s ]
+SQL: SELECT * FROM `cms_users` WHERE ( `id` = '1015' ) LIMIT 1   [ RunTime:0.000445s ]
+SQL: UPDATE `cms_users` SET `email`='1016903103@qq.com',`username`='1016903103@qq.com',`realname`=null,`password`='624063a9aa8e8ada75746a6f07457034',`mobile`=null,`manager`='N',`secret`='',`repasscode`=null,`invite_code`=null,`ip`='127.0.0.1',`source`=null,`login_time`=0,`create_time`=2015,`partner_id`=0 WHERE ( `id` = '1015' ) [ RunTime:0.000710s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001114s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001257s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\85bc64c0de626e203431ed644a802c5d.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\85bc64c0de626e203431ed644a802c5d.php 第 10 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.013564s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013716s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000667s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000634s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000442s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000737s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.000928s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003867s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000815s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000952s ]
+
+[ 2015-08-03T13:57:20+08:00 ] 127.0.0.1 /register/login
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.029628s ]
+INFO: [ route_check ] --END-- [ RunTime:0.029977s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.091252s ]
+INFO: Run CheckLang Behavior [ RunTime:0.011659s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.103492s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.004704s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000573s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000516s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.014910s ]
+INFO: [ view_template ] --END-- [ RunTime:0.015234s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\19f83913252230cf321a3c05fe12e293.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\19f83913252230cf321a3c05fe12e293.php 第 10 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.251756s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.251973s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.018871s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.016686s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.009182s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.010379s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.003359s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.059602s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.034941s ]
+INFO: [ view_end ] --END-- [ RunTime:0.035216s ]
+
+[ 2015-08-03T13:57:21+08:00 ] 127.0.0.1 /Common/common/captcha
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001039s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001206s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000733s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000677s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001655s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.004898s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000413s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000403s ]
+
+[ 2015-08-03T14:02:05+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.024079s ]
+INFO: Run CheckLang Behavior [ RunTime:0.011646s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.035995s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.003714s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000343s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000334s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.019582s ]
+INFO: [ view_template ] --END-- [ RunTime:0.019735s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.001024s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.278494s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.278794s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.015283s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.016402s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.009088s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.011158s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.005076s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.058998s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.064260s ]
+INFO: [ view_end ] --END-- [ RunTime:0.064713s ]
+
+[ 2015-08-03T14:02:49+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000863s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000897s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.018275s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000610s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.001383s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001488s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001755s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000629s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.023532s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023777s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001830s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002505s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000760s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000846s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.001038s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007773s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001055s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001200s ]
+
+[ 2015-08-03T14:03:47+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001029s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000781s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002062s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.006203s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000341s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000312s ]
+NOTIC: [8] Undefined variable: data D:\wamp\www\yinxing_apply\Lib\Action\Frontend\IndexAction.class.php 第 5 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001032s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001174s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\23c3bffe7e61d61a021144e69e54dddc.php 第 10 行.
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'apply_intro' LIMIT 1   [ RunTime:0.000427s ]
+INFO: Run ParseTemplate Behavior [ RunTime:0.013966s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014142s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000672s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000594s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000443s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000749s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.000948s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003836s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001213s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001432s ]
+
+[ 2015-08-03T14:03:51+08:00 ] 127.0.0.1 /register/login
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.039664s ]
+INFO: [ route_check ] --END-- [ RunTime:0.039848s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000693s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000724s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001642s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.004232s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000383s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000337s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000847s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000995s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\19f83913252230cf321a3c05fe12e293.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\19f83913252230cf321a3c05fe12e293.php 第 10 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.050689s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050900s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000729s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000566s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000388s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000798s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.000874s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003816s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000831s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000964s ]
+
+[ 2015-08-03T14:03:52+08:00 ] 127.0.0.1 /Common/common/captcha
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001107s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001330s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000734s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000628s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001599s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.003718s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000459s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000450s ]
+
+[ 2015-08-03T14:03:53+08:00 ] 127.0.0.1 /register/login_submit
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001315s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001497s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000738s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001065s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002148s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.075369s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000409s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000376s ]
+NOTIC: [2048] Non-static method PhpCaptcha::Validate() should not be called statically D:\wamp\www\yinxing_apply\Lib\Autoload\Utility.class.php 第 507 行.
+
+[ 2015-08-03T14:03:53+08:00 ] 127.0.0.1 /register/login
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001398s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001615s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000739s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001127s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002204s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.071616s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000389s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000356s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001018s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001242s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: seo_keyword D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\19f83913252230cf321a3c05fe12e293.php 第 8 行.
+NOTIC: [8] Undefined index: keywords D:\wamp\www\yinxing_apply\Runtime\Cache\Frontend\19f83913252230cf321a3c05fe12e293.php 第 10 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.013601s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013752s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000577s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000533s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000388s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001187s ]
+NOTIC: [8] Use of undefined constant encrypt_request - assumed 'encrypt_request' D:\wamp\www\yinxing_apply\Lib\Behavior\EncryptRequestBehavior.class.php 第 11 行.
+INFO: Run EncryptRequest Behavior [ RunTime:0.001257s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004502s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000915s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001047s ]
+
+[ 2015-08-03T14:03:53+08:00 ] 127.0.0.1 /Common/common/captcha
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001809s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002139s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001324s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001070s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002887s ]
+SQL: SHOW COLUMNS FROM `options` [ RunTime:0.087002s ]
+SQL: SELECT `option_value` FROM `options` WHERE option_name = 'root_domain' LIMIT 1   [ RunTime:0.000493s ]
+SQL: SELECT * FROM `options` WHERE autoload = 'Y'  [ RunTime:0.000584s ]
+

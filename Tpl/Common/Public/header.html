@@ -1,0 +1,26 @@
+<include file="Common:Public:html_header" />
+<div class="front">
+
+<div class="top">
+    <div class="container">
+        <a href="/"><img id="logo" src="/styles/css/images/logo.png" style="height: 63px;" /></a>
+    </div>
+</div>
+
+<div class="container" style="min-height:500px">
+    <div class="justcenter">
+        <if condition="Session::get('success')">
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+              {:Session::get("success", true)}
+          </div>
+        </if>
+        <if condition="Session::get('error')">
+          <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+              {:Session::get("error", true)}
+          </div>
+        </if>
+    </div>
+
+<div style="margin-top: 10px">

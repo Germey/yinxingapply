@@ -1,0 +1,10 @@
+<layout name="Public/frontend_template"/>
+    <div class="container" style="width:780px; margin-top:30px">
+
+        <div class="register_block" style="padding:20px">
+            <h4>验证失败</h4>
+            <hr />
+            验证失败,请重新注册或通知管理员<br/>
+            <a href="/register">点击这里重新注册</a>
+        </div>
+</div>

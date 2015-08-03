@@ -1,0 +1,54 @@
+<include file="Common:Public:html_header" />
+<div id="dashboard">
+    <div class="container">
+        <div id="print_and_submit" style="text-align: center">
+            <a href="/userinfo" class="btn">返回首页</a>
+            <if condition="intval($user_info['status']) eq 50 OR $user_info['editable'] eq 1">
+                <a href="/userinfo/edit" class="btn btn-danger">编辑</a>
+                <a class="btn btn-primary" onclick="submit_userinfo()">提交</a>
+            </if>
+            <a href="javascript:void(0)" onclick="print_page()" class="btn btn-success">打印</a><span class="muted">
+            &nbsp;&nbsp;使用Chrome浏览器可以直接打印另存为PDF文件</span>
+        </div>
+
+        <div class="dashboard_main_content dashboard_preview">
+            <h4 class="justcenter" style="margin-top: 40px;">银杏伙伴成长计划项目申请材料</h4>
+            <hr />
+            <div class="dashboard_preview">
+                <h4>一. 本人信息</h4>
+                <ul class="info project">
+                    <foreach name="userinfo_items" item="one">
+                        {:project_display_block($key, $userinfo_items, $user_info[$key])}
+                    </foreach>
+                </ul>
+                <div class="clear"></div>
+
+                <h4>二. 申请理由陈述</h4>
+                <ul class="info project">
+                    <foreach name="apply_questions_1" item="one">
+                    {:project_display_block($key, $apply_questions_1, $question_info_1[$key], ++$idx . '. ')}
+                    </foreach>
+                </ul>
+                <h4>三. 个人成长计划</h4>
+                <ul class="info project">
+                    <foreach name="apply_questions_2" item="one">
+                        {:project_display_block($key, $apply_questions_2, $question_info_2[$key], ++$idx . '. ')}
+                    </foreach>
+                </ul>
+            </div>            
+        </div>
+    </div>
+</div>  <!--end of container-->
+<script type="text/javascript">
+    function print_page(){
+        $("#print_and_submit").remove();
+        window.print();
+    }
+
+    function submit_userinfo() {
+        if(window.confirm("是否确认提交申请，提交之后将不能再修改")) {
+            window.location.href = "/userinfo/submit_notice";
+        }
+    }
+
+</script>

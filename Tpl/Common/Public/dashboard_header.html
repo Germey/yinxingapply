@@ -1,0 +1,104 @@
+<include file="Common:Public:html_header" />
+<div id="dashboard">
+
+<div class="top">
+  <div class="container" style="position: relative">
+    <a href="/userinfo"><img id="logo" src="/styles/css/images/logo.png" style="height: 63px;" /></a>
+    <div class="pull-right">
+      您好{$login_user['email']} 欢迎来到{$INI['site_name']}！
+        <a href="/dashboard/account_info">修改密码</a>
+        <a href="/register/logout">退出登录</a>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="clear container">
+    <div class="navbar navbar-static-top" style="margin-top:2px">
+      <div class="navbar-inner" style="box-shadow: none;">
+        <div class="container">
+          <div class="nav-collapse collapse" >
+            <ul class="nav">
+                <li <if condition="MODULE_NAME == 'Userproject'" >class="active"</if> >
+                  <a href="/userproject">申请项目</a>
+                </li>
+                <li <if condition="ACTION_NAME == 'account_info'" >class="active"</if>>
+                  <a href="/dashboard/account_info">密码修改</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</div> -->
+
+<div class="container" style="min-height:500px">
+<div style="margin-top: 10px">
+  <if condition="($module_selector == 'edit_recommend' || $module_selector == 'edit_userinfo' )&& $display != 'preview' " >
+     <div class="sidebar_nav affix" data-spy="affix" data-offset-top="110">
+        <ul class="nav nav-pills nav-stacked">
+            {:dashboard_sidebar($selector, $module_selector);}
+        </ul>
+          <a href="javascript:void(0)" onclick="ajax_save();">
+          <label class="label-warning temp_save" >
+            <i class="icon-white icon-file"></i>&nbsp;保存草稿
+          </label>
+          </a>
+        <div class="clear"></div>
+        <label class="label-info temp_save" id="click_preview" onclick="click_preview()">
+          <i class="icon-white icon-share-alt"></i>&nbsp;点击预览
+        </label>
+        <label class="label-success temp_save temp_save_nocursor" >
+          <i class="icon-white icon-ok"></i>&nbsp;填写进度&nbsp;<span id="complete_percentage">0%</span>
+        </label>
+     <script type="text/javascript">
+        $(document).ready(function(){
+          sleep_and_count_percentage();
+          // $('[name]').keyup(sleep_and_count_percentage);
+          // $('select').change(sleep_and_count_percentage);
+        })
+
+        function sleep_and_count_percentage(){
+          setInterval(count_percentage, 3000);
+        }
+
+        function count_percentage(){
+            var total = 0;
+            var empty = 0;
+
+            //同步一下ueditor
+            var editors = simpleeditor_map.values();
+            for (var i = 0; i < editors.length; i++) {
+                var editor = editors[i];
+                editor.sync();
+            }
+
+            var exclude_list = new Array('quality','wmode','allowScriptAccess','flashvars');
+
+            $('form [name]').each(
+                function(index, item) {
+                  var type = $(item).prop("type");
+                  var item_class = $(item).prop("class");
+                  
+                  if((item_class && item_class.indexOf('group_span')>=0) || type == "hidden" || !$(item).prop("id")) {
+                      return true;
+                  }
+
+                  if(!$(item).is("a") && !$(item).is("meta") && exclude_list.indexOf($(item).prop('name'))==-1){
+                    total++;
+                    var value = $(item).val();
+                    if(value == ""){
+                      empty++;
+                    }
+                  }
+
+                  // param[$(item).attr('name')] = $(item).val();
+                }
+            );
+            var percentage = Math.floor((1 - parseFloat(empty)/total) * 100);
+            $("#complete_percentage").html(percentage + "%");
+        }
+      </script>
+
+
+    </div>
+  </if>

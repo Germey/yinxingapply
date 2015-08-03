@@ -1,0 +1,17 @@
+<layout name="Public/frontend_template"/>
+
+<div class="about">
+    <div class="left">
+        <ul>
+            <foreach name="lefts" item="one">
+                <li <if condition="str_replace('/page/','', $key) == $pagename">class="on"</if>>
+                    <a href="{$key}">{$one}</a>
+                </li>
+            </foreach>
+        </ul>
+    </div>
+    <div class="right">
+        <h2>404 Page Not Found</h2>
+    </div>
+</div>
+<div class="clear"></div>

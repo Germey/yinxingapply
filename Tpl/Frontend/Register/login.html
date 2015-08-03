@@ -1,0 +1,17 @@
+<layout name="Public/frontend_template"/>
+
+<div class="container" style="width:350px; margin-top:40px">
+    <div class="register_block">
+        <form class="login_form" action="/register/login_submit" method="post">
+            <h4>用户登录</h4>
+            <input type="text" placeholder="请输入邮箱" name="email" id="email" style="width:255px">
+            <input type="password" placeholder="请输入密码" name="password" id="password" style="width:255px">
+            {:captcha_image()}
+            <button class="btn btn-success" style="width:100%; margin-top:10px" type="submit">登 录</button>
+            <table class="table"><tr>
+                <td><a href="/register/forget_password">忘记密码？</a></td>
+                <td><a class="pull-right" href="/register">注册新账户</a></td>
+            </tr></table>
+        </form>
+    </div>
+</div>

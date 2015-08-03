@@ -1,0 +1,21 @@
+<include file="Common:Public:dashboard_header" />
+    <if condition="($module_selector == 'edit_recommend' || $module_selector == 'edit_userinfo' )&& $display != 'preview' " >
+      <div class="dashboard_main_content">
+    <else />
+      <div class="dashboard_main_content" style="width:980px;padding:10px">
+    </if>
+    <if condition="Session::get('success')">
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+          {:Session::get("success", true)}
+      </div>
+    </if>
+    <if condition="Session::get('error')">
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+          {:Session::get("error", true)}
+      </div>
+    </if>
+    {__CONTENT__}
+</div>
+<include file="Common:Public:footer" />

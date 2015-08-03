@@ -1,0 +1,14 @@
+<layout name="Public/frontend_template"/>
+
+<div class="maincenter">
+  <br />
+
+  <div style="padding-left:20px; line-height:25px; font-size:15px">{:D('Options')->getOption('apply_intro')}</div>
+  
+  <br />
+  <p class="justcenter">
+    <a href="/register" class="btn btn-success btn-large"><i class="icon-user icon-white"></i> 注册账户</a>&nbsp;&nbsp;
+    <a href="/register/login" class="btn btn-large"><i class="icon-chevron-right"></i> 直接登录</a>
+  </p>
+</div>
+

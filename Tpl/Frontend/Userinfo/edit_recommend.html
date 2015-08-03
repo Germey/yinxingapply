@@ -1,0 +1,336 @@
+<layout name="Public/dashboard_template"/>
+
+</script>
+<div class="label label-success draft-save-tip" id="draft-save-tip"><p>已自动保存草稿</p></div>
+
+<h4 class="justcenter">银杏伙伴成长计划项目推荐材料</h4>
+<hr>
+
+<form action="/userinfo/save_recommend" method="post" onsubmit="return beforeSubmit();" id="mainform">
+    <input type="hidden" name="id" id="id" value="{$recommend['id']}">
+    <input type="hidden" name="myformtoken" value="{$myformtoken}">
+
+    <a name="_basic_info"></a>
+    <h4>一. 本人信息</h4>
+    <ul class="info project">
+        <foreach name="recommend_items" item="one">
+            <?php if($key=='name') break; ?>
+            {:project_block($key, $recommend_items, $user_info[str_replace('userinfo_','',$key)])}
+        </foreach>
+    </ul>
+    <div class="clear"></div>
+
+    <a name="_detail"></a>
+    <h4>二. 推荐理由</h4>
+    <ul class="info project">
+        <h4 class="clear sub">被推荐人基本情况</h4>
+        <foreach name="recommend_items" item="one">
+            <?php if(strpos($key,'userinfo_')===0) continue; ?>
+            {:project_block($key, $recommend_items, $recommend[$key])}
+        </foreach>
+        <foreach name="recommend_questions" item="one">
+            {:project_block($key, $recommend_questions, $recommend_question_answers[$key], ++$idx . '. ')}
+        </foreach>
+    </ul>
+
+    <div class="clear"></div>
+    <br />
+    <input type="hidden" value='{:Session::get("project_alert_item_keys", true)}' id="project_alert_item_keys" />
+    <p class="text-center"><input type="submit" class="btn btn-large btn-success" value="保存预览"/></p>
+    
+</form>
+<script type="text/javascript">
+
+//获取项目信息中未填写信息的id,将边框变红
+var project_alert_item_keys = $("#project_alert_item_keys").val();
+if(project_alert_item_keys){
+  var idArr = project_alert_item_keys.split(',');
+  var len = idArr.length;
+  for(var i = 0;i<len;i++){
+    var id = "#"+idArr[i];
+    $(id).css("border-color",'red');
+  }
+}
+
+//////////////////项目详情部分/////////////////////////////
+
+$(document).ready(function(){
+    $("textarea.limited").each(function(){
+        change_count(this, parseInt($(this).attr('data-limit')));
+    })
+
+    $("textarea.limited").keyup(function(){
+        change_count(this, parseInt($(this).attr('data-limit')));
+    })
+})
+
+function change_count(element, max) {
+    var len = $(element).val().length;
+    var id = $(element).attr('id');
+    var limit_type = $(element).attr('limit_type');
+
+
+    var len_span = $("#"+id+'_limit_tip');
+
+    if(limit_type=='min_as') {
+        if(len < max){
+            len_span.css("color", "red");
+            len += "（还不够）";
+        }else{
+            len_span.css("color", "#999");
+        }
+    } else {
+        var maxLength=$(element).attr('maxlength',max);
+        if(len >= max){
+            len_span.css("color", "red");
+            len += "（字符超限了）";
+        }else{
+            len_span.css("color", "#999");
+        }
+    }
+    len_span.html(len);
+}
+
+
+//////////////////////财务文件///////////////////////////////
+var attachments = new Map();
+
+$(document).ready(function() {
+
+    // Prevent Users from submitting form by hitting enter
+    $('input,select').keypress(function(event) { return event.keyCode != 13; });
+
+    $('#upload-finance').uploadify({
+      'uploader' : '/styles/js/jquery.uploadify/uploadify.swf',
+      'script' : '/styles/js/jquery.uploadify/uploadify.php',
+      'cancelImg' : '/styles/js/jquery.uploadify/cancel.png',
+      'buttonImg': '/styles/js/jquery.uploadify/select.png',
+      'width': 170,
+      'auto' : true,
+      'queueID' : 'custom-queue',
+      'multi' : true,
+      'simUploadLimit' : 1,
+      'sizeLimit' : 11000000,
+      'removeCompleted' : false,
+      'onComplete' : function(event, ID, fileObj, response, data) {
+            //安全问题，限制文件后缀
+            if(response==0) return alert('文件后缀不允许：' + fileObj.name);
+            var file = new Array(response, fileObj.name, fileObj.size);
+            attachments.put(ID, file);
+      },
+      'onCancel' : function(event, ID, fileObj, data) {
+          attachments.remove(ID);
+          $("#note"+ID).remove();
+      }
+    });
+});
+
+
+function delete_file(id, element) {
+    if(window.confirm('确定删除该附件？')) {
+        attachments.remove(id);
+        $(element).parent().parent().remove();
+        // 真实删除
+        X.get('/userinfo/delete_attachment?project_id='+ $("#project_id").val() +'&id='+id);
+    }
+}
+
+////////////////////////////////提交////////////////////////////////////////////////
+function beforeSubmit(){
+    // return false;
+    var idMap = new Map();
+
+    idMap.put("attachments", attachments);
+
+    var keys = idMap.keys();
+    for (var i = 0; i < keys.length; i++) {
+        var id = keys[i];
+        var list = idMap.get(id);
+        if(list){
+            var list_vals = list.values();
+            list_vals = list_vals.join("||");
+            $("#" + id).val(list_vals);
+        }
+    };
+}
+
+
+//写完题目之后自动保存一下 主要解决的问题好似添加项目计划的时候能有ID
+//每隔5分钟自动保存
+$(document).ready(function() {
+    $("#userinfo_name").blur(function(){  ajax_save();  });
+    // setInterval(ajax_save, 5 * 60 * 1000 );
+
+    $("#email").blur(function(){
+        $("#bademailtip").remove();
+        var email = $(this).val();
+        var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/i;
+        if(!reg.test(email)) {
+            $(this).after('<div class="text-error" id="bademailtip">格式有误</div>');
+        }
+    });
+
+    // $("#mobile").blur(function(){
+    //     $("#badmobiletip").remove();
+    //     var mobile = $(this).val();
+    //     var reg = /^1[345]\d{9}$|^18\d{9}$|^0\d{9,10}$/;
+    //     if(!reg.test(mobile)) {
+    //         $(this).after('<div class="text-error" id="badmobiletip">格式有误</div>');
+    //     }
+    // });    
+});
+
+function ajax_save(){
+    if(!$('#userinfo_name').val()) {
+        alert('姓名不能为空'); return;
+    }
+
+    beforeSubmit();
+
+    var editors = simpleeditor_map.values();
+    for (var i = 0; i < editors.length; i++) {
+        var editor = editors[i];
+        editor.sync();
+    };
+
+    var param = {};
+    $('#mainform [name]').each(
+        function(index, item) {
+            var v = $(item).val();
+            var k = $(item).attr('name');
+
+            if(k.indexOf("[]") > 0) {
+                if(!param[k]) {
+                    param[k] = [];
+                }
+
+                if($(item).attr('type')=='checkbox') {
+                    if($(item).attr('checked')=='checked') {
+                        param[k].push(v);
+                    }
+                } else {
+                    param[k].push(v);
+                }
+            } else {
+                param[k] = v;
+            }
+        }
+    );
+    $.ajax({
+        url: '/userinfo/ajax_save_recommend',
+        type: 'POST',
+        async: false,
+        data: param,
+        dataType: 'html',
+        timeout: 18000,
+        error: function() {
+          alert('Internal server error');
+          return false;
+        },
+        success: function(html) {
+          var res = parseInt(html);
+          if(res) {
+            show_save_tip();
+          }
+          if(res) {
+            $("#id").val(res);
+          }
+        }
+    });
+}
+
+function show_save_tip() {
+    $("#draft-save-tip").show();
+    setTimeout("$('#draft-save-tip').slideUp('slow', function(){ $('#draft-save-tip').hide(); })", 5000);
+}
+
+function click_preview() {
+    var id = $("#id").val();
+    if(!id) {
+        setTimeout(ajax_save(), 4000);
+    }
+    window.open('/userinfo/preview_recommend?id='+id);
+}
+
+// jQuery(document).bind('keydown', 'Ctrl+s',function (evt) { ajax_save(); return false; });
+
+function nl2br(str, is_xhtml) {
+    if($.browser.msie == true) {
+      var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br ' + '/>' : '<br>'; // Adjust comment to avoid issue on phpjs.org display
+      return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');    
+    }
+    return str;
+}
+
+$(document).ready(function() {
+    $("#title").blur(function(){  ajax_save();  });
+
+    // 城市下拉框
+    setupcity();
+
+    $('.option_other_tag').click(function(){
+        $(this).find(".option_other").focus();
+    });
+
+    $('.option_other').change(function(){
+        // $(this).find(".option_other").focus();
+        var target_id = 'value_' + $(this).attr('id');
+        $("#"+target_id).val('【其他】' + $(this).val());
+    });
+
+    $('.option_other').click(function(){
+        var target_id = 'value_' + $(this).attr('id');
+        $("#"+target_id).prop('checked', true);
+    });
+
+});
+
+
+function add_group_line(key) {
+    var line = $('<div>').append($('#group_new_line_'+key).clone()).html();
+    $('#group_new_table_'+key).append(line);
+
+    if(key=='project_detail_finance') {
+        init_money_input();
+        
+        $(".type_fee").blur(function() {
+            caculate_budget_fee();
+        });
+    }
+}
+
+function caculate_budget_fee() {
+    var sum = 0;
+    var total = $('#need_budget').val();
+    $(".type_fee").each(function(){
+        var val = parseFloat($(this).val().replace(/,/g,''));
+        if(!isNaN(val)) {
+            sum += val;
+        }
+    });
+    
+    var left = parseFloat(total.replace(/,/g,'')) - sum;
+    if(left<0) {
+        alert('填写预算超了');
+    }
+
+    $('#temp_fee').remove();
+    $('#project_detail_finance_title').after('<span id="temp_fee" style="padding-left:10px;color:red">预算总额：￥'+total+'，已填写：￥<span class="money">'+sum+'</span>，剩余：￥<span class="money">'+left+'</span></span>');
+    init_money_input();
+}
+
+function init_money_input() {
+  $('.money').formatCurrency({ symbol: '', negativeFormat: '-%s%n', roundToDecimalPlace: 1 });    
+  $('.money').blur(function() {
+    $(this).formatCurrency({ symbol: '', negativeFormat: '-%s%n', roundToDecimalPlace: 1 });
+  });
+}
+
+function change_type(item) {
+    if(window.confirm('确定要修改申请类型？')) {
+        X.get('/userinfo/ajax_change_type?to='+item.value);
+    }
+
+}
+
+</script>

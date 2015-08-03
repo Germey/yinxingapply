@@ -1,0 +1,104 @@
+<script type="text/javascript" src="/styles/js/jquery.uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+<script type="text/javascript" src="/styles/js/jquery.uploadify/swfobject.js"></script>
+<link rel="stylesheet" href="/styles/js/jquery.uploadify/uploadify.css" type="text/css" media="screen" charset="utf-8" />
+
+<layout name="../Frontend/Public/dashboard_template"/>
+<h4 class="justcenter">
+  上传项目附件（阶段报告，统计表格等）
+  <a class="pull-right" href="/userinfo" style="font-size:14px;">&lt;返回</a>
+</h4>
+
+<hr>
+<if condition="$attachments">
+  <h5>已上传的文件列表</h5>
+  <table class="table table-bordered">
+    <tr><th>所在目录</th><th>文件名称</th><th>大小</th><th>上传人</th><th>上传日期</th><th>操作</th></tr>
+    <foreach name="attachments" item="one">
+      <tr>
+        <td nowrap>{$dirs[$one['dir_id']]}</td>
+        <td nowrap>{$one['title']}</td>
+        <td><b>{:formatBytes($one['size'])}</b></td>
+        <td>
+          {$one['create_user_id']>2000?$user_info['name']:'管理员'}
+        </td>
+        <td>{:substr($one['create_time'],0,16)}</td>
+        <td>
+          <a href="/attachment/download?module=user&uid={$login_user['id']}&id={$one.id}">下载</a>
+          <if condition="$user_info['id'] eq $one['create_user_id']">
+            &nbsp;<a href="/attachment/ajax_delete?module=user&uid={$login_user['id']}&id={$one.id}" class="ajaxlink">删除</a>
+          </if>
+        </td>
+      </tr>
+    </foreach>
+  </table>
+</if>
+
+<form action="/userinfo/submit_attachment" method="post" onsubmit="return beforeSubmit();">
+    <input type="hidden" name="user_id" value="{$login_user['id']}">
+    <p>
+      <div>1. 上传支教相关的任何附件，包括但不限于：各种报告，财务报表，反馈感想等</div>
+      <div>2. 单个文件大小不超过10M，允许上传的文件类型：压缩包、Word、Excel、PPT、PDF、TXT、常用图片文件</div>
+    </p>    
+    <div>
+      <input type="file" id="upload-finance" name="upload-finance" />
+      <p id="custom-queue" name="custom-queue"></p>
+    </div>
+    <input type="hidden" name="attachments" id="attachments" value="" />
+    <input type="submit" class="btn btn-danger" value="确认保存" id="save_attachment_btn" style="display: none;" />
+</form>
+
+<script type="text/javascript">
+  var attachments = new Map();
+
+  $(document).ready(function() {
+      $('#upload-finance').uploadify({
+        'uploader' : '/styles/js/jquery.uploadify/uploadify.swf',
+        'script' : '/styles/js/jquery.uploadify/uploadify.php',
+        'cancelImg' : '/styles/js/jquery.uploadify/cancel.png',
+        'buttonImg': '/styles/js/jquery.uploadify/select.png',
+        'width': 170,
+        'auto' : true,
+        'queueID' : 'custom-queue',
+        'multi' : true,
+        'simUploadLimit' : 1,
+        'sizeLimit' : 10000000,            //大概4M
+        'removeCompleted' : false,
+        'onComplete' : function(event, ID, fileObj, response, data) {
+              //安全问题，限制文件后缀
+              if(response==0) return alert('文件后缀不允许：' + fileObj.name);
+              var file = new Array(response, fileObj.name, fileObj.size, ID);
+              attachments.put(ID, file);
+              $("#save_attachment_btn").show();
+
+              var str = '<select name="dir_id'+ID+'" id="dir_id'+ID+'"><option value="0">- 请选择所在目录 -</option><foreach name="dirs" item="value"><option value="'+"{$key}"+'">'+"{$value}"+'</option></foreach></select>';
+              $("#upload-finance"+ID).after(str);
+
+        },
+        'onCancel' : function(event, ID, fileObj, data) {
+            attachments.remove(ID);
+            $("#note"+ID).remove();
+        }
+      });
+  });
+
+
+function beforeSubmit() {
+
+    var idMap = new Map();
+
+    idMap.put("attachments", attachments);
+
+    var keys = idMap.keys();
+    for (var i = 0; i < keys.length; i++) {
+        var id = keys[i];
+        var list = idMap.get(id);
+        if(list){
+            var list_vals = list.values();
+            list_vals = list_vals.join("||");
+            $("#" + id).val(list_vals);
+        }
+    }
+}
+</script>
+
+

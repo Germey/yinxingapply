@@ -1,0 +1,28 @@
+<layout name="Public/dashboard_template"/>
+<h4>修改密码</h4>
+<form action="/dashboard/password_submit"  class="validator">
+    <ul class="info">
+        <li>
+            <label class="title">旧密码：</label>
+            <div class="detail">
+                <input type="password" name="oldpassword"  require="true" datatype="require" msg="不能为空" name="password" placeholder="请输入旧密码" id="oldpassword">
+            </div>
+        </li>
+        <li>
+            <label class="title">新密码：</label>
+            <div class="detail">
+                <input type="password"  name="newpassword"  require="true" datatype="require" msg="不能为空" name="password" placeholder="请输入新密码" id="newpassword">
+            </div>
+        </li>
+        <li>
+            <label class="title">再输入一次：</label>
+            <div class="detail">
+                <input type="password"  name="newpassword2"  require="true" datatype="compare" placeholder="请再次输入密码" compare="newpassword" msg="密码不一致" id="newpassword2" >
+            </div>
+        </li>
+        <li>
+            <label class="title"></label>
+            <div class="detail"><input type="submit" class="btn btn-success" value="提交"/></div>
+        </li>
+    </ul>
+</form>
