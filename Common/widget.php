@@ -260,9 +260,9 @@ function dashboard_group_edit($key,$label_name, $options, $value, $placeholder) 
                 $table .= '<td>'. group_edit_input($name_prefix . $ok, $v[$ok], $ov['class'], $ov['extra_attr']) .'</td>';
             }
         }
+        $table .= '<td><a class="delete_group_line" alt="删除">-</a></td>';
         $table .= '</tr>';
     }
-
     $table .= '<tr id="group_new_line_'. $key .'">';
     foreach ($options as $k => $v) {
         if($v['type']=='select') {
@@ -273,9 +273,9 @@ function dashboard_group_edit($key,$label_name, $options, $value, $placeholder) 
             $table .= '<td>'. group_edit_input($name_prefix . $k,'', $v['class'], $v['extra_attr']) .'</td>';
         }
     }
-
+    $table .= '<td><a class="delete_group_line" alt="删除">-</a></td>';
     $table .= '</tr></table>';
-    $table .= '<p><a href="javascript:void(0);" onclick="add_group_line(\''.$key.'\')">+增加新记录</a>&nbsp;&nbsp;<span class="muted">（若要删除某行，将该行的每个输入框清空即可）</span></p>';
+    $table .= '<p><a href="javascript:void(0);" onclick="add_group_line(\''.$key.'\')">+增加新记录</a>&nbsp;&nbsp;</p>';
     
     $str .= '<div class="muted">'. $placeholder .'</div>';
     $str .= '<div class="control-group">';

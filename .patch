@@ -1,0 +1,63 @@
+Index: Lib/Action/Frontend/UserinfoAction.class.php
+===================================================================
+--- Lib/Action/Frontend/UserinfoAction.class.php	(revision 2)
++++ Lib/Action/Frontend/UserinfoAction.class.php	(working copy)
+@@ -20,16 +20,17 @@
+         $this->recommend_questions = $question_items[1];
+         $this->apply_questions_1 = $question_items[2];
+         $this->apply_questions_2 = $question_items[3];
+-        
+         // 我的推荐
+         $this->recommends = D("UserRecommends")->getsByRecommendUserId(USER_ID);
+-
+         // 我的申请
+         $this->recommend_items = $this->_get_recommend_items();
+ 
++        $user_id = $this->user_info['recommend_info']['recommend_user_id'];
++        $this->recommend_name = M("UserInfo")->where("id=".$user_id)->getField("name");
++
+         $this->userinfo_items = $this->_get_info_items();
++        $this->is_apply = $this->user_info && $this->user_info['apply_code'];
+ 
+-        $this->is_apply = $this->user_info && $this->user_info['apply_code'];
+     }
+ 
+     private function _get_info_items() {
+Index: styles/css/main.css
+===================================================================
+--- styles/css/main.css	(revision 2)
++++ styles/css/main.css	(working copy)
+@@ -121,7 +121,9 @@
+ select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+   border-radius: 0;
+ }
+-
++.again-recommend {
++  margin-top: 20px;
++}
+ .btn {
+   text-shadow:none;
+   background-image: none;
+Index: Tpl/Frontend/Userinfo/index.html
+===================================================================
+--- Tpl/Frontend/Userinfo/index.html	(revision 2)
++++ Tpl/Frontend/Userinfo/index.html	(working copy)
+@@ -6,7 +6,7 @@
+     <td>
+       <if condition="$userinfo['invite_code']">
+           <span class="text-error">当前状态：【{$user_info['status_name']}】</span>
+-          <span>&nbsp;&nbsp;推荐人：{$userinfo['recommend_info']['name']}@{$userinfo['recommend_info']['recommend_submit_time']}</span>
++          <span>&nbsp;&nbsp;推荐人：{$recommend_name}@{$userinfo['recommend_info']['recommend_submit_time']}</span>
+           <span class="pull-right">          
+             <if condition="intval($user_info['status']) eq 50 OR $user_info['editable'] eq 1">
+                 <a href="/userinfo/edit" class="btn btn-danger"><i class="icon-pencil icon-white"></i> 编辑</a>&nbsp;
+@@ -65,6 +65,9 @@
+             </tr>
+           </foreach>
+         </table>
++        <div class="text-center">
++          <a href="/userinfo/edit_recommend" class="btn btn-primary btn-large again-recommend">继续推荐</a>
++        </div>
+       <else />
+         <div class="text-center">
+           <a href="/userinfo/edit_recommend" class="btn btn-primary btn-large">我是推荐人，马上去推荐</a>

@@ -78,7 +78,6 @@ class UserinfoAction extends DashboardBaseAction {
             "hobby" => array("display" => "兴趣爱好", "type" => "textarea", "param" =>array("placeholder" => "", "require" => 1, )),
             "self_introduction" => array("display" => "自我评价", "type" => "textarea", "param" =>array("placeholder" => "", "require" => 1, )),
             "honor" => array("display" => "所获荣誉", "type" => "textarea", "param" =>array("placeholder" => "", "require" => 1, )),
-            "link" => array("display" => "相关链接", "type" => "textarea", "param" =>array("placeholder" => "", "require" => 1, )),
             // "submit_time" => array("display" => "申请日期", "type" => "date", "param" =>array("placeholder" => "格式：YYYY-MM-DD", "require" => 1)),
         );
 
@@ -96,22 +95,22 @@ class UserinfoAction extends DashboardBaseAction {
             "userinfo_duty" => array("display" => "职务", "param" =>array("require" => 1)),
             "userinfo_mobile" => array("display" => "联系电话" , "param" =>array("require" => 1)),
             "userinfo_email" => array("display" => "联系邮件", "param" =>array("require" => 1)),
-            "userinfo_birthday" => array("display" => "出生日期", "type" => "date", "param" =>array("placeholder" => "格式：YYYY-MM", "require" => 1)),
-            "userinfo_work_from" => array("display" => "参加工作时间", "type" => "date","param" =>array("require" => 1)),
-            "userinfo_address" => array("display" => "所在地区", "type"=>"address", "li_class" => "fw", "param" =>array("require" => 1) ),
-            "userinfo_address_zipcode" => array("display" => "邮编", "param" =>array("require" => 1)),
+            "userinfo_birthday" => array("display" => "出生日期", "type" => "date", "param" =>array("placeholder" => "格式：YYYY-MM-DD", )),
+            "userinfo_work_from" => array("display" => "参加工作时间", ),
+            "userinfo_address" => array("display" => "通讯地址", "li_class"=>"fw", "param"=>array('placeholder'=>'')),
+            "userinfo_address_zipcode" => array("display" => "邮编", ),
 
-            "userinfo_work_info" => array("display" => "主要工作经历", "type" => "group" , "param" =>array("placeholder" => "时间顺序由近及远", "require" => 1,
+            "userinfo_work_info" => array("display" => "主要工作经历", "type" => "group" , "param" =>array("placeholder" => "时间顺序由近及远", 
                 'options' => array('time'=>array('name'=>'时间', 'class'=>'span3', 'extra_attr' => 'placeholder=""'),
                                      'detail' => array('name'=>'主要经历','type'=>'textarea', 'class'=>'span6'),
                                      ))),
-            "userinfo_honor" => array("display" => "所获荣誉", "type" => "textarea", "param" =>array("require" => 1)),
+            "userinfo_honor" => array("display" => "所获荣誉", "type" => "textarea", ),
 
             "name" => array("display" => "姓名", "type" => "text", "param" =>array("require" => 1)),
             "org" => array("display" => "工作单位", "param" =>array("placeholder" => "", "require" => 1)),
             "mobile" => array("display" => "联系电话" , "param" =>array("require" => 1)),
             "email" => array("display" => "联系邮件", "param" =>array("require" => 1)),
-            "address" => array("display" => "所在地区", "type"=>"address", "li_class" => "fw", "param" =>array("require" => 1) ),
+            "address" => array("display" => "所在地区", "type"=>"address", "li_class" => "fw", ),
         );
 
         return $items;
@@ -133,9 +132,12 @@ class UserinfoAction extends DashboardBaseAction {
         // $myformtoken = md5(time() . $id . $this->partner['id']);
         // Session::Set('myformtoken', $myformtoken);
         // $this->assign('myformtoken', $myformtoken);
+
         $this->question_info_1 = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],2,'_question_');
-        $this->question_info_2 = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],3,'_question_');;
+        $this->question_info_2 = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],3,'_question_');
+
         $this->assign('module_selector',"edit_userinfo");
+
         $filter['user_id'] = $this->userinfo['recommend_info']['id'];
         $filter['create_user_id'] = $this->login_user['id'];
         $this->attachments = D("UserAttachments")->where($filter)->order('id desc')->select();
@@ -508,24 +510,24 @@ class UserinfoAction extends DashboardBaseAction {
         $f['id'] = $id = intval(I("id"));
         $f['recommend_user_id'] = $this->login_user['id'];
         $recommend = D("UserRecommends")->where($f)->find();
+
         if(!$recommend) {
             session('error', '参数有误');
         }
 
         $recommend_question_answers = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],1,'_question_');
+
         foreach ($this->recommend_items as $key => $value) {
             if(!$value['param']['require']) {
                 continue;
             }
-            if(strpos($key, 'userinfo_')===0 && (trim($this->user_info[substr($key,9)])=="")) {
-                $alert_items[] = $value['display'];
-                $project_alert_item_keys[] = $key;
-            }
-            if(strpos($key, 'userinfo_') === false && trim($recommend[$key])=="") {
+
+            if(strpos($key, 'userinfo_')===0 && !trim($this->user_info[substr($key,9)])) {
                 $alert_items[] = $value['display'];
                 $project_alert_item_keys[] = $key;
             }
         }
+
         $idx = 0;
         foreach ($this->recommend_questions as $k => $v) {
             $idx++;
@@ -538,6 +540,7 @@ class UserinfoAction extends DashboardBaseAction {
                 $project_alert_item_keys[] = $k;
             }
         }
+
         if($alert_items){
             Session::set('error', "提交时，以下字段不能为空：".implode('，', $alert_items));
             Session::set('project_alert_item_keys',implode(",",$project_alert_item_keys));

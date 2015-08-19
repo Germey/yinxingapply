@@ -25,10 +25,7 @@ small{ font-size: 100% }
 [class^="icon-"], [class*=" icon-"] {
   margin-top: 3px;
 }
-.delete_group_line {
-  font-size: 20px;
-  cursor: pointer;
-}
+
 input.span1, textarea.span1, .uneditable-input.span1 {width: 72px;}
 input.span6, textarea.span6, .uneditable-input.span6 {width: 425px;}
 select, input[type="file"] {  height: 28px;line-height: 28px; }
@@ -173,7 +170,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 #dashboard .sidebar_nav{width: 150px; float: left; background:#FFF;}
 #dashboard .sidebar_nav .nav{margin-bottom: 0;}
 #dashboard .sidebar_nav .nav li a{font-size: 14px; padding-top: 15px; padding-bottom: 15px;font-weight: bold;}
-#dashboard h4{padding-left: 10px; font-size: 16px;padding-bottom: 10px;}
+#dashboard h4{padding-left: 10px; font-size: 16px;}
 #dashboard form h4{font-size:16px; margin-top:15px; background:whitesmoke; padding:5px;}
 #dashboard form h4.sub{font-size:14px; margin-left: 25px; margin-bottom: 0;border-left: 2px solid #DDD; padding-left: 10px;}
 
@@ -187,7 +184,6 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 #dashboard .temp_save a{color: white;font-size:14px}
 #dashboard .temp_save i{margin-top:3px}
 #dashboard .draft-save-tip { position:fixed; top:1px; margin-left:30px; display:none; text-align: center; padding-top:10px; padding-left: 50px; padding-right: 50px}
-#dashboard .alert-tip { position:fixed; top:1px; margin-left:30px; display:none; text-align: center; padding-top:10px; padding-left: 50px; padding-right: 50px}
 
 #dashboard .dashboard_main_content{width: 820px; min-height: 200px; float: right; background: white; padding: 5px;}
 #dashboard .dashboard_main_content a.hi{font-weight: bold;}
@@ -209,7 +205,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 #dashboard .dashboard_main_content .info textarea.span8{width: 658px;}
 #dashboard .dashboard_main_content .info select.span8{width: 666px;}
 
-#dashboard .dashboard_main_content .info .title{float: left; text-align: right; width: 120px; margin-right: 14px; cursor: default; margin-top: 3px; font-size: 14px; color:#2f6f9f; }
+#dashboard .dashboard_main_content .info .title{float: left; text-align: right; width: 140px; margin-right: 10px; cursor: default; margin-top: 3px; font-size: 13px; color:#2f6f9f; }
 #dashboard .dashboard_main_content .info .detail{/*width: 660px; */margin-left: 150px; float: none;}
 #dashboard .dashboard_main_content .info .detail .item{width: 100%; float: left; padding-bottom: 10px}
 #dashboard .dashboard_main_content .info .detail .item textarea{width: 525px;}
@@ -225,7 +221,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 #dashboard .dashboard_main_content .project .span5 {margin:0}
 #dashboard .dashboard_main_content .project li input{margin-bottom: 0}
 #dashboard .dashboard_main_content .project li select{margin-bottom: 0}
-#dashboard .dashboard_main_content .project li.fw {float: left; width: 90%;}
+#dashboard .dashboard_main_content .project li.fw {float: left; width: 100%;}
 #dashboard .dashboard_main_content .project li.split{background: whitesmoke; padding: 10px 0 0 15px; height: 30px; min-height: 30px; font-weight: bold; font-size: 15px; margin-bottom: 10px;}
 
 #dashboard .dashboard_main_content .project li.with_prefix label.title{display: none;}
@@ -238,13 +234,10 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 #dashboard .dashboard_preview{width: 1000px; margin: auto ;float: none; position: relative; background: white; padding: 0 5px;}
 #dashboard .dashboard_preview .info .detail{line-height: 25px;}
 #dashboard .dashboard_preview .info .detail p {margin-bottom: 3px}
-#dashboard .dashboard_preview .project ul {
-  font-size: 15px;
-}
-#dashboard .dashboard_preview .project li {font-size: 14px;width: 500px; min-height: 36px; border-bottom: 1px dashed #efefef; padding: 10px 0 0px 0;}
+#dashboard .dashboard_preview .project li {width: 500px; min-height: 36px; border-bottom: 1px dashed #efefef; padding: 10px 0 0px 0;}
 /*#dashboard .dashboard_preview .project li table{width: 850px}*/
 #dashboard .dashboard_preview .project li.fw {margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #efefef; }
-#dashboard .dashboard_preview .project li.full {border: none; width: 100%;}
+#dashboard .dashboard_preview .project li.full {border: none; }
 #dashboard .dashboard_preview .project li.full label.title{display: none; }
 #dashboard .dashboard_preview .project li.full div.detail{margin-left: 50px; }
 #dashboard .dashboard_preview #print_and_submit {position: fixed; width: 1000px; margin: auto; top: 10px; margin-left: 660px}
@@ -268,14 +261,3 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 
 .uploadifyQueue .completed {  width: 500px; float: left; padding: 7px;}
 .uploadifyQueue select {    float: left; margin-top: 8px; width: 420px;}
-@media print { 
-  .dashboard_preview .table-bordered {
-    border: 1px solid #EEE;
-  }
-  .dashboard_preview .table-bordered  td{
-    border-left: none;
-  }
-  .dashboard_preview .table-bordered  th{
-    border-left: none;
-  }
-}
