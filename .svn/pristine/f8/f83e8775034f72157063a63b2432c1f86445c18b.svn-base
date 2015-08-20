@@ -1,0 +1,596 @@
+<?php
+class UserinfoAction extends DashboardBaseAction {
+
+    function __construct() {
+        parent::__construct();
+
+        // 基础数据
+        $question_items = array();
+        for($i=1;$i<=3;$i++) {        
+            $tmp = D(PM_NAME . "://UserTypeQuestions")->gets($i);
+            foreach ($tmp as $one) {
+                $question_items[$i]['_question_'.$one['id']] = array(
+                        'display' => $one['question'],
+                        'type'    => "textarea",
+                        'question_id'    => $one['id'],
+                        "param" =>array("require" => 1, "placeholder"=>$one['note']),
+                    );
+            }
+        }
+        $this->recommend_questions = $question_items[1];
+        $this->apply_questions_1 = $question_items[2];
+        $this->apply_questions_2 = $question_items[3];
+        // 我的推荐
+        $this->recommends = D("UserRecommends")->getsByRecommendUserId(USER_ID);
+        // 我的申请
+        $this->recommend_items = $this->_get_recommend_items();
+
+        $user_id = $this->user_info['recommend_info']['recommend_user_id'];
+        $this->recommend_name = M("UserInfo")->where("id=".$user_id)->getField("name");
+
+        $this->userinfo_items = $this->_get_info_items();
+        $this->is_apply = $this->user_info && $this->user_info['apply_code'];
+
+    }
+
+    private function _get_info_items() {
+
+        $items = array(
+            "name" => array("display" => "姓名", "type" => "text", "param" =>array("require" => 1)),
+            "gender" => array("display" => "性别" , "type" => "select", "param" => array("options" => array('女', '男'))),
+            "mobile" => array("display" => "手机", "param" =>array("require" => 1)),
+            "email" => array("display" => "邮箱", "param" =>array("require" => 1)),
+
+            "birthday" => array("display" => "出生日期", "type" => "date", "param" =>array("placeholder" => "格式：YYYY-MM-DD", "require" => 1)),
+            "people" => array("display" => "民族", "type"=>'select', "param" =>array("require" => 1, 'options'=>array('汉族','壮族','回族','满族','维吾尔族','苗族','彝族','土家族','藏族','蒙古族','侗族','布依族','瑶族','白族','朝鲜族','哈尼族','黎族','哈萨克族','傣族','畲族','傈僳族','东乡族','仡佬族','拉祜族','佤族','水族','纳西族','羌族','土族','仫佬族','锡伯族','柯尔克孜族','景颇族','达斡尔族','撒拉族','布朗族','毛南族','塔吉克族','普米族','阿昌族','怒族','鄂温克族','京族','基诺族','德昂族','保安族','俄罗斯族','裕固族','乌孜别克族','门巴族','鄂伦春族','独龙族','赫哲族','高山族','珞巴族','塔塔尔族','其它'))),
+            "marital" => array("display" => "婚姻状况" , "type" => "select", "param" => array("options" => array('未婚', '已婚'))),
+            "work_from" => array("display" => "工作时间", "param" =>array("require" => 1, 'placeholder'=>'XXXX年参加工作')),
+            "identity_id" => array("display" => "身份证号", "param" =>array("require" => 1)),
+            "language" => array("display" => "语言能力", ),
+            "address" => array("display" => "通讯地址", "type"=>"address", "li_class" => "fw", "param" =>array("require" => 1),),
+            "address_zipcode" => array("display" => "邮编", ),
+
+            "edu_info" => array("display" => "教育情况", "type" => "group" , "param" =>array("placeholder" => "时间顺序由近及远", 
+                'options' => array('time'=>array('name'=>'时间段', 'class'=>'span2', 'extra_attr' => 'placeholder=""'),
+                                     'school' => array('name'=>'就读学校','class'=>'span2'),
+                                     'major' => array('name'=>'专业','class'=>'span2'),
+                                     'degree' => array('name'=>'学历','class'=>'span2'),
+                                     ))),
+
+            "training_info" => array("display" => "培训情况", "type" => "group" , "param" =>array("placeholder" => "", 
+                'options' => array('time'=>array('name'=>'时间段', 'class'=>'span2', 'extra_attr' => 'placeholder=""'),
+                                     'org' => array('name'=>'培训机构','class'=>'span2'),
+                                     'content' => array('name'=>'培训内容','type'=>'textarea', 'class'=>'span5'),
+                                     ))),
+
+            "work_info" => array("display" => "工作经历", "type" => "group" , "param" =>array("placeholder" => "时间顺序由近及远", 
+                'options' => array('time'=>array('name'=>'时间段', 'class'=>'span2', 'extra_attr' => 'placeholder=""'),
+                                    'duty' => array('name'=>'职务', 'class'=>'span2', ),
+                                     'detail' => array('name'=>'主要经历','type'=>'textarea', 'class'=>'span5'),
+                                     ))),
+
+            "other_info" => array("display" => "其他社会工作/义工经历", "type" => "group" , "param" =>array("placeholder" => "时间顺序由近及远", 
+                'options' => array('time'=>array('name'=>'时间段', 'class'=>'span2', 'extra_attr' => 'placeholder=""'),
+                                    'duty' => array('name'=>'职务', 'class'=>'span2', ),
+                                     'detail' => array('name'=>'主要经历','type'=>'textarea', 'class'=>'span5'),
+                                     ))),
+
+            "hobby" => array("display" => "兴趣爱好", "type" => "textarea", "param" =>array("placeholder" => "", "require" => 1, )),
+            "self_introduction" => array("display" => "自我评价", "type" => "textarea", "param" =>array("placeholder" => "", "require" => 1, )),
+            "honor" => array("display" => "所获荣誉", "type" => "textarea", "param" =>array("placeholder" => "", "require" => 1, )),
+            "link" => array("display" => "相关链接", "type" => "textarea", "param" =>array("placeholder" => "", "require" => 1, )),
+            // "submit_time" => array("display" => "申请日期", "type" => "date", "param" =>array("placeholder" => "格式：YYYY-MM-DD", "require" => 1)),
+        );
+
+        return $items;
+    }
+
+
+
+    private function _get_recommend_items() {
+
+        $items = array(
+            "userinfo_name" => array("display" => "姓名", "type" => "text", "param" =>array("require" => 1)),
+            "userinfo_gender" => array("display" => "性别" , "type" => "select", "param" => array("options" => array('女', '男'))),
+            "userinfo_org" => array("display" => "工作单位" , "param" =>array("require" => 1)),
+            "userinfo_duty" => array("display" => "职务", "param" =>array("require" => 1)),
+            "userinfo_mobile" => array("display" => "联系电话" , "param" =>array("require" => 1)),
+            "userinfo_email" => array("display" => "联系邮件", "param" =>array("require" => 1)),
+            "userinfo_birthday" => array("display" => "出生日期", "type" => "date", "param" =>array("placeholder" => "格式：YYYY-MM", "require" => 1)),
+            "userinfo_work_from" => array("display" => "参加工作时间", "type" => "date","param" =>array("require" => 1)),
+            "userinfo_address" => array("display" => "所在地区", "type"=>"address", "li_class" => "fw", "param" =>array("require" => 1) ),
+            "userinfo_address_zipcode" => array("display" => "邮编", "param" =>array("require" => 1)),
+
+            "userinfo_work_info" => array("display" => "主要工作经历", "type" => "group" , "param" =>array("placeholder" => "时间顺序由近及远", "require" => 1,
+                'options' => array('time'=>array('name'=>'时间', 'class'=>'span3', 'extra_attr' => 'placeholder=""'),
+                                     'detail' => array('name'=>'主要经历','type'=>'textarea', 'class'=>'span6'),
+                                     ))),
+            "userinfo_honor" => array("display" => "所获荣誉", "type" => "textarea", "param" =>array("require" => 1)),
+
+            "name" => array("display" => "姓名", "type" => "text", "param" =>array("require" => 1)),
+            "org" => array("display" => "工作单位", "param" =>array("placeholder" => "", "require" => 1)),
+            "mobile" => array("display" => "联系电话" , "param" =>array("require" => 1)),
+            "email" => array("display" => "联系邮件", "param" =>array("require" => 1)),
+            "address" => array("display" => "所在地区", "type"=>"address", "li_class" => "fw", "param" =>array("require" => 1) ),
+        );
+
+        return $items;
+    }
+
+
+    public function index() {
+
+        $f['cms_user_id'] = $this->login_user['id'];
+        $f['status'] = array('gt',0);
+        
+        $this->user_status = D("UserStatuses")->getField("id, name");
+
+        $this->display();
+    }
+
+    public function edit() {
+
+        // $myformtoken = md5(time() . $id . $this->partner['id']);
+        // Session::Set('myformtoken', $myformtoken);
+        // $this->assign('myformtoken', $myformtoken);
+        $this->question_info_1 = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],2,'_question_');
+        $this->question_info_2 = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],3,'_question_');;
+        $this->assign('module_selector',"edit_userinfo");
+        $filter['user_id'] = $this->userinfo['recommend_info']['id'];
+        $filter['create_user_id'] = $this->login_user['id'];
+        $this->attachments = D("UserAttachments")->where($filter)->order('id desc')->select();
+        $this->dirs = M("AttachmentsDir")->where('type="user"')->getField('id, dir_name',true);
+
+        if($this->_get('preview')) {
+            $this->display('preview');
+            return;
+        }
+        $this->display();
+    }
+
+    // 修改申请类型
+    public function ajax_change_type() {
+        $to = intval($this->_get('to'));
+        $u['id'] = $this->login_user['id'];
+        $u['apply_type_id'] = $to;
+        M("UserInfo")->save($u);
+        
+        json(NULL, 'refresh'); 
+    }
+
+    // 预览
+    public function preview() {
+        redirect('/userinfo/edit?preview=1');
+    }
+
+    // 提交给管理员并且通知
+    public function submit_notice() {
+        $this->question_info_1 = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],2,'_question_');
+        $this->question_info_2 = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],3,'_question_');
+
+        foreach ($this->userinfo_items as $key => $value) {
+            if(!$value['param']['require']) {
+                continue;
+            }
+
+            if(!trim($this->user_info[$key])) {
+                $alert_items[] = $value['display'];
+                $project_alert_item_keys[] = $key;
+            }
+        }
+
+        $idx = 0;
+        foreach ($this->apply_questions_1 as $k => $v) {
+            $idx++;
+            if(!$v['param']['require']) {
+                continue;
+            }
+
+            if(!trim($this->question_info_1[$k])) {
+                $alert_items[] = '申请理由陈述'.$idx;
+                $project_alert_item_keys[] = $k;
+            }
+        }
+
+        $idx = 0;
+        foreach ($this->apply_questions_2 as $k => $v) {
+            $idx++;
+            if(!$v['param']['require']) {
+                continue;
+            }
+
+            if(!trim($this->question_info_2[$k])) {
+                $alert_items[] = '个人成长计划'.$idx;
+                $project_alert_item_keys[] = $k;
+            }
+        }
+
+        if($alert_items){
+            Session::set('error', "提交时，以下字段不能为空：".implode('，', $alert_items));
+            Session::set('project_alert_item_keys',implode(",",$project_alert_item_keys));
+            redirect('/userinfo/edit');
+        }
+
+        $user_info = $this->user_info;
+
+        $u['id'] = $user_info['recommend_info']['id'];
+        $u['editable'] = 0;
+        $u['apply_submit_date'] = date('Y-m-d');
+        if($user_info['status']==50) {
+            $u['status'] = 60;
+        }
+        D("UserRecommends")->save($u);
+        Session::Set("success", "提交成功。感谢您的填写，我们会尽快查看您的信息并及时回复");
+
+        // 发邮件给项目负责人
+        $title = '【'.D('Options')->getOption('site_name').'】申请材料提交提醒 - '. $user_info['name'];
+        $content = "详情链接：" . D('Options')->getOption('webroot_pm') . '/user/detail/' . $user_info['recommend_info']['id'];
+        Mailer::SmtpMail(null, D('Options')->getOption('contact_email'), $title, $content);
+        
+        // 发邮件给提交人
+        // $title = '【'.D('Options')->getOption('site_name').'】项目提交成功';
+        // $this->project = $p;
+        // $content = $this->fetch('mail_to_submiter');
+        // Mailer::SmtpMail(null, $this->login_user['email'], $title, $content);
+        
+        redirect("/userinfo/index");
+    }
+
+
+    //诚信约定函 目前没用
+    public function before_add_project(){
+        $content = D("Options")->getOption("project_agreement");
+        $content = str_replace(array('[#org_name#]', '[#date#]'), array($this->partner['title'], date('Y年m月d日')), $content);
+
+        $this->assign('content',$content);
+        $this->display();
+    }
+
+    // 提交草稿
+    public function save_draft() {
+        $id = $this->_save_userinfo();
+        redirect('/userinfo/edit?preview=1');
+    }
+
+    // ajax方式提交
+    public function ajax_save_userinfo(){
+        $id = $this->_save_userinfo();
+        echo $id;
+    }
+
+    // 
+    private function _save_userinfo() {
+        // 处理group
+        foreach ($this->userinfo_items as $k => $v) {
+            if($v['type']==='group') {            
+                $options = $v['param']['options'];
+                for($i=0; $i<100; $i++) {
+                    $keep = 0;                  //有完全空的行，直接忽略了
+                    foreach ($options as $kk => $vv) {
+                        $groups[$i][$kk] = trim($_POST[$k . '_group_'.$kk][$i]);
+                        if($groups[$i][$kk]) {
+                            $keep = 1;
+                        }
+                    }
+                    if(!$keep) {
+                        unset($groups[$i]);
+                    }
+                }
+                $_POST[$k] = serialize($groups);
+            }
+
+            if($v['type']==='checkbox') {
+                $_POST[$k] = serialize($_POST[$k]);
+            }
+        }
+
+        //
+        $user_data = $_POST;
+        $user_data['id'] = $this->login_user['id'];
+        $user_data['update_time'] = date('Y-m-d H:i:s');
+
+
+        if(!M("UserInfo")->getById($this->login_user['id'])) {
+            $user_data['create_time'] = date('Y-m-d H:i:s');
+            D("UserInfo")->add($user_data);
+        } else {
+            D("UserInfo")->save($user_data);
+        }
+
+        // 
+        D("UserQuestionAnswers")->where('cms_user_id='.$this->login_user['id'])->delete();
+
+        foreach($this->apply_questions_1 as $k => $v) {
+            $one = array(
+                    'cms_user_id'   =>  $this->login_user['id'], 
+                    'type_id'   =>  2, 
+                    'question_id'   =>  $v['question_id'], 
+                    'answer'        =>  $_POST['_question_'.$v['question_id']],
+                );
+            D("UserQuestionAnswers")->add($one);
+        }
+        foreach($this->apply_questions_2 as $k => $v) {
+            $one = array(
+                    'cms_user_id'   =>  $this->login_user['id'], 
+                    'type_id'   =>  3, 
+                    'question_id'   =>  $v['question_id'], 
+                    'answer'        =>  $_POST['_question_'.$v['question_id']],
+                );
+            D("UserQuestionAnswers")->add($one);
+        }
+
+        //处理上传文件
+        $this->_handle_upload();
+        return $this->login_user['id'];
+    }
+
+
+    // 附件相关
+    public function upload_files() {
+
+        // 这个user_id实际上是recommend_id
+        $filter['user_id'] = $this->login_user['id'];
+        // $filter['create_user_id'] = $this->login_user['id'];
+        $this->attachments = D("UserAttachments")->where($filter)->order('id desc')->select();
+
+        $this->dirs = M("AttachmentsDir")->where('type="user"')->getField('id, dir_name',true);
+
+        $this->display();
+    }
+
+    private function _handle_upload() {
+        $attachments = $this->_param("attachments");
+        if($attachments) {
+            $exists = Utility::AssColumn(D("UserAttachments")->where('user_id='.intval($this->login_user['id']))->field('path')->select(), 'path');
+
+            $attachments = explode('||', $attachments);
+            foreach ($attachments as  $attachment) {
+                $attach_info = explode(",", $attachment);
+                if($exists[$attach_info[0]]) {
+                    continue;
+                }
+                $attachment_infos[] = $attach_info;
+                $file = array(
+                    "path" => $attach_info[0],
+                    "title" => $attach_info[1],
+                    "size" => $attach_info[2],
+                    "create_user_id" => $this->login_user['id'],
+                    "user_id" => $this->userinfo['recommend_info']['id'],
+                    "create_time" => date('Y-m-d H:i:s'),
+                    "type" => 'user',
+                    "dir_id" => intval($this->_param('dir_id'.$attach_info[3])),
+                );
+          
+                D("UserAttachments")->add($file);
+            }
+        }
+        return $attachment_infos;
+    }
+
+    public function submit_attachment() {
+        $attachment_infos = $this->_handle_upload();
+
+        if($attachment_infos) {
+            // 发邮件给项目负责人
+            $webroot_pm = D('Options')->getOption('webroot_pm');
+            $title = '【'.D('Options')->getOption('site_name').'】' . $this->user_info['name'] .' 有新文件提交';
+            $content = "用户详情页：" . $webroot_pm . '/userinfo/detail/' . $this->user_info['id'];
+            foreach ($attachment_infos as $k => $v) {
+                $content .= '<p> - <a href="'.$webroot_pm.'/uploads'. $v[0] .'">'. $v[1] .'</a></p>';
+            }
+            Mailer::SmtpMail(null, D('Options')->getOption('contact_email'), $title, $content);
+        }
+
+        redirect('/userinfo/upload_files');
+    }
+
+
+    public function delete_attachment() {
+        $attach = D("UserAttachments")->find($this->_get('id'));
+        
+        if($this->userinfo['recommend_info']['id']!==$attach['user_id']) {
+            Session::set('error', '没有权限');
+            return;
+        }
+        return D("UserAttachments")->delete($this->_get('id'));
+    }
+
+    // 推荐
+    public function edit_recommend() {
+
+        $this->_items = $this->_get_recommend_items();
+
+        $id = intval(I('id'));
+        $f['id'] = $id;
+        $f['recommend_user_id'] = $this->login_user['id'];
+        $this->recommend = D("UserRecommends")->where($f)->find();
+        $this->recommend_question_answers = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],1,'_question_');
+
+        $this->assign('module_selector',"edit_recommend");
+        $this->display();
+    }
+
+    public function save_recommend() {
+        $id = $this->_save_recommend();
+        redirect('/userinfo/preview_recommend?id='.$id);
+    }
+
+    public function ajax_save_recommend() {
+        $id = $this->_save_recommend();
+        echo $id;
+    }
+
+    private function _save_recommend() {
+        $_items = $this->recommend_items;
+        foreach ($_items as $k => $v) {
+            if($v['type']==='group') {            
+                $options = $v['param']['options'];
+                for($i=0; $i<100; $i++) {
+                    $keep = 0;                  //有完全空的行，直接忽略了
+                    foreach ($options as $kk => $vv) {
+                        $groups[$i][$kk] = trim($_POST[$k . '_group_'.$kk][$i]);
+                        if($groups[$i][$kk]) {
+                            $keep = 1;
+                        }
+                    }
+                    if(!$keep) {
+                        unset($groups[$i]);
+                    }
+                }
+                $_POST[$k] = serialize($groups);
+            }
+
+            if($v['type']==='checkbox') {
+                $_POST[$k] = serialize($_POST[$k]);
+            }
+        }
+
+        //
+        $data = I('post.');
+
+        foreach($data as $k => $v) {
+            if(strpos($k,'userinfo_')===0) {
+                $user_data[substr($k,9)] = $v;
+            } else {
+                $recommend_data[$k] = $v;
+            }
+        }
+
+        $user_data['id'] = $this->login_user['id'];
+        $user_data['update_time'] = date('Y-m-d H:i:s');
+        if(!M("UserInfo")->getById($this->login_user['id'])) {
+            $user_data['create_time'] = date('Y-m-d H:i:s');
+            D("UserInfo")->add($user_data);
+        } else {
+            D("UserInfo")->save($user_data);
+        }
+
+
+        $recommend_data['recommend_user_id'] = $this->login_user['id'];
+
+        if($recommend_data['id']) {
+            $recommend_data['update_time'] = date('Y-m-d H:i:s');
+        } else {
+            $recommend_data['create_user_id'] = $this->login_user['id'];
+            $recommend_data['create_time'] = $recommend_data['update_time'] = date('Y-m-d H:i:s');            
+        }
+        $last_id = D("UserRecommends")->saveOrUpdate($recommend_data);
+
+        $df['cms_user_id'] = $this->login_user['id'];
+        $df['type_id'] = 1;
+        D("UserQuestionAnswers")->where($df)->delete();
+        foreach($this->recommend_questions as $k => $v) {
+            $one = array(
+                    'cms_user_id'   =>  $this->login_user['id'], 
+                    'type_id'       =>  1, 
+                    'question_id'   =>  $v['question_id'], 
+                    'answer'        =>  $data['_question_'.$v['question_id']],
+                );
+            D("UserQuestionAnswers")->add($one);
+        }
+
+        return $last_id;
+    }
+
+
+    public function preview_recommend() {
+        $f['id'] = intval(I("id"));
+        $f['recommend_user_id'] = $this->login_user['id'];
+        $this->recommend = D("UserRecommends")->where($f)->find();
+        $this->recommend_question_answers = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],1,'_question_');
+
+        $this->display();
+    }
+
+    // 提交给管理员并且通知
+    public function submit_recommend() {
+
+        $f['id'] = $id = intval(I("id"));
+        $f['recommend_user_id'] = $this->login_user['id'];
+        $recommend = D("UserRecommends")->where($f)->find();
+        if(!$recommend) {
+            session('error', '参数有误');
+        }
+
+        $recommend_question_answers = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],1,'_question_');
+        foreach ($this->recommend_items as $key => $value) {
+            if(!$value['param']['require']) {
+                continue;
+            }
+            if(strpos($key, 'userinfo_')===0 && (trim($this->user_info[substr($key,9)])=="")) {
+                $alert_items[] = $value['display'];
+                $project_alert_item_keys[] = $key;
+            }
+            if(strpos($key, 'userinfo_') === false && trim($recommend[$key])=="") {
+                $alert_items[] = $value['display'];
+                $project_alert_item_keys[] = $key;
+            }
+        }
+        $idx = 0;
+        foreach ($this->recommend_questions as $k => $v) {
+            $idx++;
+            if(!$v['param']['require']) {
+                continue;
+            }
+
+            if(!trim($recommend_question_answers[$k])) {
+                $alert_items[] = '问答题'.$idx;
+                $project_alert_item_keys[] = $k;
+            }
+        }
+        if($alert_items){
+            Session::set('error', "提交时，以下字段不能为空：".implode('，', $alert_items));
+            Session::set('project_alert_item_keys',implode(",",$project_alert_item_keys));
+            redirect('/userinfo/edit_recommend?id='.$id);
+        }
+
+        $u['id'] = $recommend['id'];
+        $u['editable'] = 0;
+        $u['recommend_submit_time'] = date('Y-m-d H:i:s');
+        if($recommend['status']==1) {
+            $u['status'] = 20;
+        }
+        $u['invite_code'] =  D('UserRecommends')->genInviteCode();
+        D("UserRecommends")->save($u);
+
+        Session::Set("success", "提交成功，感谢您的推荐，我们会尽快查看您的提交并及时回复");
+
+        // 发邮件给项目负责人
+        $title = '【'.D('Options')->getOption('site_name').'】新推荐'. $title_key . $recommend['name'];
+        $content = "推荐链接：" . D('Options')->getOption('webroot_pm') . '/user/detail/' . $recommend['id'];
+        Mailer::SmtpMail(null, D('Options')->getOption('contact_email'), $title, $content);
+
+        redirect("/userinfo/index");
+    }
+
+    // 校验唯一码
+    function check_invite_code() {
+        $code = intval(I('invite_code'));
+        $recommend = M("UserRecommends")->getByInviteCode($code);
+        
+        if(!$recommend) {
+            Session::Set("error", "邀请码校验失败，请重新输入或者联系我们");
+        } else {
+            $up['id'] = USER_ID;
+            $up['invite_code'] = $code;
+            if($this->user_info) {
+                M("UserInfo")->save($up);
+            } else {
+                $up['name'] = $recommend['name'];
+                $up['org'] = $recommend['org'];
+                $up['mobile'] = $recommend['mobile'];
+                $up['address'] = $recommend['address'];
+                $up['address_province'] = $recommend['address_province'];
+                $up['address_city'] = $recommend['address_city'];
+                $up['address_area'] = $recommend['address_area'];
+
+                $up['email'] = $this->login_user['email'];
+
+                M("UserInfo")->add($up);
+            }
+
+            Session::Set("success", "邀请码校验成功，请继续完善你的个人信息");
+        }
+        redirect('/userinfo/index');
+    }
+}

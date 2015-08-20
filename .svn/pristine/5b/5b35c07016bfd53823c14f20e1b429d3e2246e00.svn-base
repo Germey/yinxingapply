@@ -1,0 +1,26 @@
+<div id="modaldialog"></div>
+</div>
+</div>  <!--end of container-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".datepicker").datetimepicker({language: 'zh-CN',startView: 2,minView: 2,format: "yyyy-mm",autoclose: true,todayBtn: true});
+    });
+</script>
+<div id="footer">
+    <div class="container">
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <p>Copyright©{:date('Y')} {$INI['site_name']} 版权所有</p>
+                    <p><a target="_blank" href="http://www.naradafoundation.org/category/35">回到{$INI['site_name']}官网</a></p>
+                    <div>京ICP备12048184号</div>
+                </td>
+                <td class="text-right">
+                    <img style="width:100px;" src="/styles/css/images/wechat.png" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<include file="Common:Public:html_footer" />

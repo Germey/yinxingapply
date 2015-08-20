@@ -1,0 +1,21 @@
+<layout name="Public/dashboard_template"/>
+
+<blockquote>
+    {$content}
+</blockquote>
+<br />
+<div style="margin-left:400px">
+    <label class="checkbox"><input type="checkbox" id="agree" checked="true">我同意该协议</label>
+    <a href="javascript:void(0)" onclick="to_edit_project_page();" class="btn btn-success">下一步</a>
+    
+</div>
+<script type="text/javascript">
+    function to_edit_project_page(){
+        var checked = $("#agree").is(':checked')
+        if(checked){
+            window.location.href = "/userproject/project_edit";
+        }else{
+            alert("请确认协议");
+        }
+    }
+</script>
