@@ -74,7 +74,7 @@
 </div>  <!--end of container-->
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".datepicker").datetimepicker({language: 'zh-CN',startView: 2,minView: 2,format: "yyyy-mm-dd",autoclose: true,todayBtn: true});
+        $(".datepicker").datetimepicker({language: 'zh-CN',startView: 2,minView: 2,format: "yyyy-mm",autoclose: true,todayBtn: true});
     });
 </script>
 <div id="footer">

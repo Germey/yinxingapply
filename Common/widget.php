@@ -329,3 +329,19 @@ function display_group($value, $options) {
 
     return $table;
 }
+
+//获得新的编号
+function createIdentifier($province) {
+    $provinces = D("UserRecommends")->getsByAddressProvince($province);
+    //获取该省所有标识符的最后一个，生成下一个
+    $last_province = $provinces[count($provinces) - 1];
+    //每个省份对应编号的最后一个的数字，例如北京5，获取5这个数字
+    $last_num = substr($last_province['identifier'], strlen($province));
+    $next_num = 1;
+    //如果数字存在，那么加1，否则默认为1
+    if (is_numeric($last_num)) {
+        $next_num = intval($last_num) + 1;
+    }
+    return $province.$next_num;
+}
+

@@ -546,9 +546,16 @@ class UserinfoAction extends DashboardBaseAction {
 
         $u['id'] = $recommend['id'];
         $u['editable'] = 0;
+        $province = $recommend['address_province'];
+        //如果当前被推荐人省份为空，那么设置为未知省份
+        if ($province === "") {
+            $province = "未知";
+            $u['address_province'] = "未知";
+        }
+        $u['identifier'] = createIdentifier($province);
         $u['recommend_submit_time'] = date('Y-m-d H:i:s');
         if($recommend['status']==1) {
-            $u['status'] = 20;
+            $u['status'] = 30;
         }
         $u['invite_code'] =  D('UserRecommends')->genInviteCode();
         D("UserRecommends")->save($u);
