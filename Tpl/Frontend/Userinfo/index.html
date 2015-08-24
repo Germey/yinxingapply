@@ -4,6 +4,9 @@
   <tr>
     <th style="width: 120px;text-align: center;font-size: 16px;vertical-align: top">我的申请</th>
     <td>
+      <div class="intro" style="text-indent: 10px;">
+        {$candidate_intro}
+      </div>
       <if condition="$userinfo['invite_code']">
           <span>&nbsp;&nbsp;推荐人：{$recommend_name}@{$userinfo['recommend_info']['recommend_submit_time']}</span>
           <span class="pull-right">          
@@ -36,6 +39,9 @@
   <tr>
     <th style="width: 120px;text-align: center;font-size: 16px;vertical-align: top">我的推荐</th>
     <td>
+      <div class="intro" style="text-indent: 10px;">
+        {$recommend_intro}
+      </div>
       <if condition="$recommends">
         <table class="table table-bordered" style="margin-bottom: 0">
           <tr>

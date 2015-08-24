@@ -148,6 +148,9 @@
   <tr>
     <th style="width: 120px;text-align: center;font-size: 16px;vertical-align: top">我的申请</th>
     <td>
+      <div class="intro" style="text-indent: 10px;">
+        <?php echo ($candidate_intro); ?>
+      </div>
       <?php if($userinfo['invite_code']): ?><span>&nbsp;&nbsp;推荐人：<?php echo ($recommend_name); ?>@<?php echo ($userinfo['recommend_info']['recommend_submit_time']); ?></span>
           <span class="pull-right">          
             <?php if(intval($user_info['status']) == 50 OR $user_info['editable'] == 1): ?><a href="/userinfo/edit" class="btn btn-danger"><i class="icon-pencil icon-white"></i> 编辑</a>&nbsp;
@@ -174,6 +177,9 @@
   <tr>
     <th style="width: 120px;text-align: center;font-size: 16px;vertical-align: top">我的推荐</th>
     <td>
+      <div class="intro" style="text-indent: 10px;">
+        <?php echo ($recommend_intro); ?>
+      </div>
       <?php if($recommends): ?><table class="table table-bordered" style="margin-bottom: 0">
           <tr>
             <th style="width: 100px;">被推荐人姓名</th>

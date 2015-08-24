@@ -340,7 +340,7 @@ function createIdentifier($province) {
     $next_num = 1;
     //如果数字存在，那么加1，否则默认为1
     if (is_numeric($last_num)) {
-        $next_num = sprintf("%03d",intval($last_num) + 1);
+        $next_num = intval($last_num) + 1;
     }
     return $province.$next_num;
 }

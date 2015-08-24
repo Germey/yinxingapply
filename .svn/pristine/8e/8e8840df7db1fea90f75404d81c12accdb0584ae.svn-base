@@ -124,8 +124,7 @@ class UserinfoAction extends DashboardBaseAction {
         $f['status'] = array('gt',0);
         
         $this->user_status = D("UserStatuses")->getField("id, name");
-        $this->candidate_intro = D("Options")->getOption('candidate_intro');
-        $this->recommend_intro = D("Options")->getOption('recommend_intro');
+
         $this->display();
     }
 
@@ -405,7 +404,7 @@ class UserinfoAction extends DashboardBaseAction {
         $f['id'] = $id;
         $f['recommend_user_id'] = $this->login_user['id'];
         $this->recommend = D("UserRecommends")->where($f)->find();
-        //$this->recommend_question_answers = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],1,'_question_');
+        $this->recommend_question_answers = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],1,'_question_');
 
         $this->assign('module_selector',"edit_recommend");
         $this->display();
@@ -567,14 +566,6 @@ class UserinfoAction extends DashboardBaseAction {
         $title = '【'.D('Options')->getOption('site_name').'】新推荐'. $title_key . $recommend['name'];
         $content = "推荐链接：" . D('Options')->getOption('webroot_pm') . '/user/detail/' . $recommend['id'];
         Mailer::SmtpMail(null, D('Options')->getOption('contact_email'), $title, $content);
-
-        //发邮件给推荐人
-        $title = D('UserStatuses')->where("id=20")->getField("success_email_subject");
-        $content = D('UserStatuses')->where("id=20")->getField("success_email_body");
-        $content = str_replace("[#recommender_name#]", D('UserInfo')->where("id=".$this->login_user['id'])->getField("name"),$content);
-        $content = str_replace("[#name#]", $recommend['name'],$content);
-        $mailto = D('CmsUsers')->where("id=".$this->login_user['id'])->getField("email");
-        Mailer::SmtpMail(null, $mailto, $title, $content);
 
         redirect("/userinfo/index");
     }
