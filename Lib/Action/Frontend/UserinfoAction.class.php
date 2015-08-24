@@ -405,8 +405,10 @@ class UserinfoAction extends DashboardBaseAction {
         $f['id'] = $id;
         $f['recommend_user_id'] = $this->login_user['id'];
         $this->recommend = D("UserRecommends")->where($f)->find();
-        //$this->recommend_question_answers = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],1,'_question_');
+        if ($id != 0) {
+            $this->recommend_question_answers = D(PM_NAME."://UserQuestionAnswers")->getByUserId($this->login_user['id'],1,'_question_');
 
+        } 
         $this->assign('module_selector',"edit_recommend");
         $this->display();
     }
