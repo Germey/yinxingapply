@@ -250,8 +250,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 #dashboard .dashboard_preview .project li.full div.detail{margin-left: 50px; }
 #dashboard .dashboard_preview #print_and_submit {position: fixed; width: 1000px; margin: auto; top: 10px; margin-left: 660px}
 #dashboard .dashboard_preview #print_and_submit label{padding: 7px 20px; font-size: 16px}
-#dashboard .dashboard_main_content .info .detail #address {float: inherit;}
-#dashboard .dashboard_main_content .info .detail #userinfo_address {float: inherit;}
+
 #dashboard .affix{top:10px;}
 #dashboard .dashboard_main_content .agreement_frame{width: 100%; overflow-y: scroll; height: 450px; border: 1px solid #EEE; margin-bottom: 20px;}
 

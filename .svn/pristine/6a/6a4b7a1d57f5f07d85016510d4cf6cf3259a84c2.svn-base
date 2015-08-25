@@ -1,0 +1,91 @@
+<layout name="../Frontend/Public/dashboard_template"/>
+
+<table style="width: 100%">
+  <tr>
+    <th style="width: 120px;text-align: center;font-size: 16px;vertical-align: top">我的申请</th>
+    <td>
+      <div class="intro" style="text-indent: 10px;">
+        {$candidate_intro}
+      </div>
+      <if condition="$userinfo['invite_code']">
+          <span>&nbsp;&nbsp;推荐人：{$recommend_name}@{$userinfo['recommend_info']['recommend_submit_time']}</span>
+          <span class="pull-right">          
+            <if condition="intval($user_info['status']) eq 50 OR $user_info['editable'] eq 1">
+                <a href="/userinfo/edit" class="btn btn-danger"><i class="icon-pencil icon-white"></i> 编辑</a>&nbsp;
+                <a href="javascript:void(0)" class="btn btn-primary" onclick="submit_userinfo()"><i class="icon-ok icon-white"></i> 提交</a>&nbsp;
+            </if>
+            <a href="/userinfo/preview" class="btn" target="_blank"><i class="icon-print"></i> 预览</a>
+            <if condition="$user_info['status'] gt 50">
+                <a href="/userinfo/upload_files" class="btn btn-danger" target="_blank"><i class="icon-chevron-up icon-white"></i> 上传资料</a>
+            </if>
+          </span>
+      <else />
+        <div class="text-center">
+          <div>
+            <a class="ajaxlink btn btn-success btn-large" onclick="$(this).hide();$('#invide_code_form').show();">我是候选人，校验邀请码</a>
+            <form id="invide_code_form" method="get" action="/userinfo/check_invite_code" style="margin: 10px 0 0 0; display: none;">
+              <div class="input-append">
+                <input type="number" class="span3" name="invite_code" placeholder="请输入六位邀请码">
+                <input type="submit" class="btn btn-success" value="验证" />
+              </div>    
+            </form>
+          </div>
+          <div></div>
+        </div>
+      </if>
+    </td>
+  </tr>
+  <tr><td colspan="2"><hr style="margin: 30px; border-top: 1px dashed #CCC;" /></td></tr>
+  <tr>
+    <th style="width: 120px;text-align: center;font-size: 16px;vertical-align: top">我的推荐</th>
+    <td>
+      <div class="intro" style="text-indent: 10px;">
+        {$recommend_intro}
+      </div>
+      <if condition="$recommends">
+        <table class="table table-bordered" style="margin-bottom: 0">
+          <tr>
+            <th style="width: 100px;">被推荐人姓名</th>
+            <th>更新时间</th>
+            <th>操作</th>
+          </tr>
+          <foreach name="recommends" item="one">
+            <tr>
+              <td>{$one['name']}</td>
+              <td><span title="{$one['update_time']}"></span>{:substr($one['update_time'],0,10)}</span></td>
+              <td>
+                <if condition="intval($one['status']) lt 2 OR $one['editable'] eq 1">
+                  <a class="btn btn-small btn-danger" href="/userinfo/edit_recommend?id={$one['id']}">编辑</a>
+                  <a class="btn btn-small btn-primary" onclick="submit_recommend({$one['id']})">提交</a>
+                </if>
+                <a target="_blank" class="btn btn-small" href="/userinfo/preview_recommend?id={$one['id']}">预览</a>
+              </td>
+            </tr>
+          </foreach>
+        </table>
+        <div class="text-center">
+          <a href="/userinfo/edit_recommend" class="btn btn-primary btn-large again-recommend">继续推荐</a>
+        </div>
+      <else />
+        <div class="text-center">
+          <a href="/userinfo/edit_recommend" class="btn btn-primary btn-large">我是推荐人，马上去推荐</a>
+        </div>
+      </if>
+    </td>
+  </tr>  
+</table>
+
+<script type="text/javascript">
+
+    function submit_userinfo(id) {
+        if(window.confirm("是否确认提交申请，提交之后将不能再修改")) {
+            window.location.href = "/userinfo/submit_notice";
+        }
+    }
+
+    function submit_recommend(id) {
+        if(window.confirm("是否确认提交推荐表，提交之后将不能再修改")) {
+            window.location.href = "/userinfo/submit_recommend?id="+id;
+        }
+    }
+</script>

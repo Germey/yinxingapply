@@ -49,8 +49,7 @@
 //后期整改新增JS
 $(function() {
     //不能修改内部函数，利用JS来隐藏输入框
-    //$("#userinfo_address").css("display", "none");
-    $("#address").css("display", "none");
+    $("#userinfo_address").css("display", "none");
     //绑定点击事件
     $("table").on("click", ".delete_group_line", function() {
         delete_group_line($(this));

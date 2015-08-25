@@ -157,7 +157,7 @@
     <a name="_basic_info"></a>
     <h4>一. 本人信息</h4>
     <ul class="info project">
-        <?php if(is_array($recommend_items)): foreach($recommend_items as $key=>$one): if($key=='name') break; ?>
+        <?php if(is_array($recommend_items)): foreach($recommend_items as $key=>$one): if($key=='userinfo_email') { $user_info['email'] = $login_user['email']; } if($key=='name') break; ?>
             <?php echo project_block($key, $recommend_items, $user_info[str_replace('userinfo_','',$key)]); endforeach; endif; ?>
     </ul>
     <div class="clear"></div>
@@ -181,7 +181,8 @@
 //后期整改新增JS
 $(function() {
     //不能修改内部函数，利用JS来隐藏输入框
-    $("#userinfo_address").css("display", "none");
+    //$("#userinfo_address").css("display", "none");
+    $("#address").css("display", "none");
     //绑定点击事件
     $("table").on("click", ".delete_group_line", function() {
         delete_group_line($(this));

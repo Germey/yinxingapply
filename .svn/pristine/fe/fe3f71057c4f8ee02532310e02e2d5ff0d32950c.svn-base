@@ -123,7 +123,7 @@
         $str .= '<select name="' . $name . '_province" id="s1_' . $name . '" class="text" style="width:72px;" ><option value="">-----</option></select>
                 <select style="width:96px;" id="s2_' . $name . '" name="' . $name . '_city"><option value="">-----</option></select>
                 <select style="width:96px;" id="s3_' . $name . '" name="' . $name . '_area"><option value="">-----</option></select>
-                <input type="text" name="' . $name . '" value="'.$adds[3].'"id="' . $name . '" class="widget_address"/>';
+                <input type="text" name="' . $name . '" id="' . $name . '" class="widget_address"/>';
 
         $str .= '<script type="text/javascript">var s_' . $name . ' = ["s1_' . $name . '", "s2_' . $name . '", "s3_' . $name . '"]; setupcity(s_' . $name . ');';
         $str .= '</script>';
@@ -156,7 +156,7 @@
 
     function project_block($name, $project_items, $value, $project_prefix_hilight) {
         $item = $project_items[$name];
-        //var_dump($item);
+
         if($item['type']=='split') {
             echo '<li class="fw split">'. $item['display'] .'</li>';
             return;
@@ -354,12 +354,11 @@ function createIdentifier($province) {
     $last_province = $provinces[count($provinces) - 1];
     //每个省份对应编号的最后一个的数字，例如北京5，获取5这个数字
     $last_num = substr($last_province['identifier'], strlen($province));
-    $next_num = "001";
+    $next_num = 1;
     //如果数字存在，那么加1，否则默认为1
     if (is_numeric($last_num)) {
-        $next_num = sprintf("%03d",intval($last_num) + 1);
+        $next_num = intval($last_num) + 1;
     }
-    var_dump($next_num);
     return $province.$next_num;
 }
 

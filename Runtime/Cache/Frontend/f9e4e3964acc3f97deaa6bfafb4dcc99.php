@@ -39,7 +39,6 @@
             <a href="javascript:void(0)" onclick="print_page()" class="btn btn-success">打印</a><span class="muted">
             &nbsp;&nbsp;使用Chrome浏览器可以直接打印另存为PDF文件</span>
         </div>
-
         <div class="dashboard_main_content dashboard_preview">
             <h4 class="justcenter" style="margin-top: 40px;">银杏伙伴成长计划项目申请材料</h4>
             <hr />
