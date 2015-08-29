@@ -60,7 +60,7 @@ $(function() {
         var year = parseInt($(this).val().split("-")[0]);
         var nowYear = new Date().getFullYear();
         if(nowYear - year < 10) {
-            if (!window.confirm("您的工作年限暂时不符合银杏计划对推荐人的要求，本次推荐有肯能无效，是否继续？")){
+            if (!window.confirm("您的工作年限暂时不符合银杏计划对推荐人的要求，本次推荐有可能无效，是否继续？")){
                 window.location.href="/userinfo";
             } 
         }
